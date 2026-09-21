@@ -1,0 +1,1 @@
+export const DISCLAIMER_TEXT = "DEMONSTRATION ENVIRONMENT: All entities, relationships, communications, locations, and case records are synthetic and created solely for prototype demonstration. Analytical metrics are illustrative and do not establish guilt or legal findings.";

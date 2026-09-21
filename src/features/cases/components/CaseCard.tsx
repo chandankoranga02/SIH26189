@@ -1,0 +1,40 @@
+import React from 'react'
+import { FileText, ArrowRight } from 'lucide-react'
+import { CaseEntity } from '@/types'
+
+export interface CaseCardProps {
+  caseItem: CaseEntity
+  onSelect?: (id: string) => void
+  isSelected?: boolean
+}
+
+export const CaseCard: React.FC<CaseCardProps> = ({
+  caseItem,
+  onSelect,
+  isSelected = false
+}) => {
+  return (
+    <div
+      onClick={() => onSelect?.(caseItem.id)}
+      className={`intel-card p-3.5 cursor-pointer transition flex items-center justify-between ${
+        isSelected ? 'border-cyan-400 bg-cyan-950/20' : 'hover:border-white/20'
+      }`}
+    >
+      <div className="flex items-center gap-3 truncate">
+        <div className="rounded-lg p-2 bg-rose-500/10 text-rose-400 border border-rose-500/20">
+          <FileText size={16} />
+        </div>
+        <div className="truncate">
+          <div className="font-bold text-white text-xs truncate">{caseItem.name}</div>
+          <div className="text-[10px] text-slate-400 mt-0.5 truncate">
+            {caseItem.id} • {caseItem.status}
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="badge-high text-[10px]">{caseItem.basePriority}</span>
+        <ArrowRight size={13} className="text-slate-500" />
+      </div>
+    </div>
+  )
+}
