@@ -64,7 +64,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div>
         <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-neutral-400 mb-2">
           <span className="flex items-center gap-1.5 font-mono">
-            <Filter size={13} className="text-[#00629B]" /> Entity Types
+            <Filter size={13} className="text-white" /> Entity Types
           </span>
           <span className="text-[10px] text-neutral-500 font-mono">
             {selectedEntityTypes.size}/{Object.keys(ENTITY_CONFIG).length}
@@ -99,7 +99,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div>
         <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-neutral-400 mb-2">
           <span className="flex items-center gap-1.5 font-mono">
-            <GitBranch size={13} className="text-[#00629B]" /> Link Categories
+            <GitBranch size={13} className="text-white" /> Link Categories
           </span>
           <span className="text-[10px] text-neutral-500 font-mono">
             {selectedRelCategories.size}/{Object.keys(REL_CATEGORY_CONFIG).length}
@@ -114,7 +114,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 onClick={() => toggleRelCategory(cat)}
                 className={`px-2 py-1 rounded text-[10px] font-semibold border text-left truncate transition ${
                   active
-                    ? 'border-[#00629B] bg-[#00629B]/20 text-white'
+                    ? 'border-white bg-white/5 text-white'
                     : 'border-neutral-900 bg-neutral-950 text-neutral-500 hover:text-neutral-300'
                 }`}
               >
@@ -181,7 +181,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div>
         <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-neutral-400 mb-2">
           <span className="flex items-center gap-1.5 font-mono">
-            <Calendar size={13} className="text-[#00629B]" /> Observation Range
+            <Calendar size={13} className="text-white" /> Observation Range
           </span>
         </div>
         <div className="grid grid-cols-2 gap-2 text-xs">
@@ -232,7 +232,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <button
               onClick={() => setViewMode('network')}
               className={`px-2 py-1 text-[10px] font-semibold ${
-                viewMode === 'network' ? 'bg-[#00629B] text-white' : 'bg-neutral-900 text-neutral-400'
+                viewMode === 'network' ? 'bg-white/5 text-white' : 'bg-neutral-900 text-neutral-400'
               }`}
             >
               Network
@@ -240,7 +240,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <button
               onClick={() => setViewMode('hierarchy')}
               className={`px-2 py-1 text-[10px] font-semibold ${
-                viewMode === 'hierarchy' ? 'bg-[#00629B] text-white' : 'bg-neutral-900 text-neutral-400'
+                viewMode === 'hierarchy' ? 'bg-white/5 text-white' : 'bg-neutral-900 text-neutral-400'
               }`}
             >
               Hierarchy
@@ -250,46 +250,37 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         <div className="flex items-center justify-between text-xs">
           <span className="text-neutral-300">Show Node Labels</span>
-          <button onClick={() => setShowLabels(p => !p)} className="text-[#00629B]" aria-label="Toggle node labels">
+          <button onClick={() => setShowLabels(p => !p)} className="text-white" aria-label="Toggle node labels">
             {showLabels ? <Eye size={15} /> : <EyeOff size={15} className="text-neutral-500" />}
           </button>
         </div>
 
         <div className="flex items-center justify-between text-xs">
           <span className="text-neutral-300">Edge Labels</span>
-          <button onClick={() => setShowRelLabels(p => !p)} className="text-[#00629B]" aria-label="Toggle edge labels">
+          <button onClick={() => setShowRelLabels(p => !p)} className="text-white" aria-label="Toggle edge labels">
             {showRelLabels ? <Eye size={15} /> : <EyeOff size={15} className="text-neutral-500" />}
           </button>
         </div>
 
         <div className="flex items-center justify-between text-xs">
-          <span className="text-neutral-300">2-Hop Network</span>
-          <button
-            onClick={() => setShowTwoHop(p => !p)}
-            className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-              showTwoHop
-                ? 'bg-[#00629B]/20 text-[#00629B] border border-[#00629B]/50'
-                : 'bg-neutral-900 text-neutral-500'
-            }`}
-          >
-            {showTwoHop ? 'ENABLED' : 'DISABLED'}
-          </button>
+          <span className="text-neutral-300">Indirect Connections</span>
+          <span className="text-[10px] text-neutral-500 italic">Toggle on graph</span>
         </div>
       </div>
 
-      {/* Security Environment Card */}
-      <div className="rounded border border-neutral-800 bg-[#0a0a0a] p-3 text-[10px] text-neutral-400 mt-auto space-y-1">
+      {/* Session Info Card */}
+      <div className="rounded border border-neutral-800 bg-[#09090B] p-3 text-[10px] text-neutral-400 mt-auto space-y-1">
         <div className="font-bold text-neutral-300 uppercase tracking-wider mb-1 flex items-center gap-1.5 font-mono">
-          <ShieldAlert size={12} className="text-[#00629B]" /> Operational Security
+          <ShieldAlert size={12} className="text-white" /> Session Status
         </div>
         <div>
-          Role: <span className="text-white">Senior Lead Investigator</span>
+          User: <span className="text-white">Lead Investigator</span>
         </div>
         <div>
-          Classification: <span className="text-amber-400">Restricted Police Net</span>
+          Access: <span className="text-neutral-400">Standard</span>
         </div>
         <div>
-          Session: <span className="text-emerald-400">Encrypted (TLS 1.3)</span>
+          Status: <span className="text-neutral-400">Active</span>
         </div>
       </div>
     </aside>

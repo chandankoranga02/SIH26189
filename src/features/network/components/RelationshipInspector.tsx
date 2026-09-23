@@ -34,7 +34,7 @@ export const RelationshipInspector: React.FC<RelationshipInspectorProps> = ({
     <div className="flex flex-col h-full p-4 space-y-4 overflow-y-auto text-xs">
       <div className="flex items-center justify-between border-b border-white/10 pb-3">
         <div>
-          <div className="text-[10px] uppercase font-bold tracking-widest text-cyan-300">
+          <div className="text-[10px] uppercase font-bold tracking-widest text-white">
             Relationship Analysis
           </div>
           <h3 className="text-sm font-bold text-white mt-0.5">{relationship.id}</h3>
@@ -60,7 +60,7 @@ export const RelationshipInspector: React.FC<RelationshipInspectorProps> = ({
           <span className="badge-neutral text-[10px]">{sId}</span>
         </button>
 
-        <div className="flex items-center justify-center gap-2 text-cyan-400 font-bold text-[11px]">
+        <div className="flex items-center justify-center gap-2 text-white font-bold text-[11px]">
           <Link2 size={13} />
           <span>{relationship.type?.replace(/_/g, ' ')}</span>
           <ArrowRight size={13} />
@@ -87,7 +87,7 @@ export const RelationshipInspector: React.FC<RelationshipInspectorProps> = ({
           <span className="text-[10px] font-bold text-slate-400 uppercase">
             Relationship Confidence
           </span>
-          <span className="text-xl font-black text-cyan-300">
+          <span className="text-xl font-black text-white">
             {Math.round(relationship.confidence * 100)}%
           </span>
         </div>
@@ -99,7 +99,7 @@ export const RelationshipInspector: React.FC<RelationshipInspectorProps> = ({
               <span className="font-bold text-slate-200">{evidenceScore} / 40</span>
             </div>
             <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-              <div className="h-full bg-cyan-400" style={{ width: `${(evidenceScore / 40) * 100}%` }} />
+              <div className="h-full bg-neutral-800" style={{ width: `${(evidenceScore / 40) * 100}%` }} />
             </div>
           </div>
 
@@ -119,7 +119,7 @@ export const RelationshipInspector: React.FC<RelationshipInspectorProps> = ({
               <span className="font-bold text-slate-200">{tempScore} / 20</span>
             </div>
             <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-              <div className="h-full bg-emerald-400" style={{ width: `${(tempScore / 20) * 100}%` }} />
+              <div className="h-full bg-neutral-800" style={{ width: `${(tempScore / 20) * 100}%` }} />
             </div>
           </div>
 
@@ -129,7 +129,7 @@ export const RelationshipInspector: React.FC<RelationshipInspectorProps> = ({
               <span className="font-bold text-slate-200">{sourceScore} / 15</span>
             </div>
             <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-              <div className="h-full bg-amber-400" style={{ width: `${(sourceScore / 15) * 100}%` }} />
+              <div className="h-full bg-neutral-800" style={{ width: `${(sourceScore / 15) * 100}%` }} />
             </div>
           </div>
         </div>
@@ -165,7 +165,7 @@ export const RelationshipInspector: React.FC<RelationshipInspectorProps> = ({
                 onClick={() => onOpenEvidence(evId)}
                 className="w-full text-left p-2 rounded-lg border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] flex items-center justify-between text-xs transition"
               >
-                <span className="font-bold text-cyan-300">{evId}</span>
+                <span className="font-bold text-white">{evId}</span>
                 <span className="text-slate-400 text-[11px] flex items-center gap-1">
                   Inspect <ChevronRight size={12} />
                 </span>

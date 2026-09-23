@@ -23,7 +23,7 @@ export const AppShell: React.FC<AppShellProps> = ({
   overlays
 }) => {
   return (
-    <div className="min-h-screen bg-[#060e1a] text-slate-100 flex flex-col selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-[#060e1a] text-slate-100 flex flex-col selection:bg-neutral-800">
       {header}
       {ticker}
       {kpiStrip}

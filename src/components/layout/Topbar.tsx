@@ -38,24 +38,20 @@ export const Topbar: React.FC<TopbarProps> = ({
             onClick={() => onNavigate?.('hub')}
             className="flex items-center gap-2.5 cursor-pointer group"
           >
-            <div className="h-8 w-8 rounded bg-[#00629B] flex items-center justify-center font-bold text-white shadow-sm">
-              <Shield size={18} />
+            <div className="h-8 w-8 rounded bg-white/5 flex items-center justify-center font-bold text-white shadow-sm border border-neutral-800">
+              <Database size={18} />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-sm font-black tracking-wider text-white group-hover:text-[#00629B] transition">
+                <span className="text-sm font-black tracking-wider text-white group-hover:text-neutral-300 transition">
                   LINKTRACER
                 </span>
                 <span className="text-[10px] text-neutral-400 font-mono hidden sm:inline">
-                  / INTELLIGENCE PLATFORM
+                  / INVESTIGATION DASHBOARD
                 </span>
               </div>
               <div className="flex items-center gap-2 text-[10px] font-mono">
-                <span className="flex items-center gap-1 text-emerald-400 font-bold">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" /> ONLINE
-                </span>
-                <span className="text-neutral-600">•</span>
-                <span className="text-amber-400 font-medium">SYNTHETIC DEMO</span>
+                <span className="text-neutral-500 font-medium">INTERNAL NETWORK</span>
               </div>
             </div>
           </div>
@@ -69,7 +65,7 @@ export const Topbar: React.FC<TopbarProps> = ({
             value={searchQuery}
             onChange={e => onSearchChange(e.target.value)}
             placeholder="Search Criminal ID or Name (e.g. Rahul, Sameer, P001)..."
-            className="w-full rounded border border-neutral-800 bg-[#0a0a0a] pl-9 pr-8 py-1.5 text-xs text-white placeholder-neutral-500 outline-none focus:border-[#00629B] focus:ring-1 focus:ring-[#00629B]/40"
+            className="w-full rounded border border-neutral-800 bg-[#09090B] pl-9 pr-8 py-1.5 text-xs text-white placeholder-neutral-500 outline-none focus:border-white focus:ring-1 focus:ring-[#00629B]/40"
           />
           {searchQuery && (
             <button
@@ -83,7 +79,7 @@ export const Topbar: React.FC<TopbarProps> = ({
 
           {/* Autocomplete Dropdown */}
           {searchResults.length > 0 && (
-            <div className="absolute top-full left-0 right-0 mt-1 rounded border border-neutral-800 bg-[#0a0a0a] shadow-2xl z-50 overflow-hidden divide-y divide-neutral-900 max-h-60 overflow-y-auto">
+            <div className="absolute top-full left-0 right-0 mt-1 rounded border border-neutral-800 bg-[#09090B] shadow-2xl z-50 overflow-hidden divide-y divide-neutral-900 max-h-60 overflow-y-auto">
               {searchResults.map(res => (
                 <button
                   key={res.id}
@@ -91,7 +87,7 @@ export const Topbar: React.FC<TopbarProps> = ({
                     onSelectSearchResult(res)
                     onNavigate?.('workspace')
                   }}
-                  className="w-full px-3 py-2 text-left hover:bg-[#00629B]/20 flex items-center justify-between text-xs transition"
+                  className="w-full px-3 py-2 text-left hover:bg-white/5 flex items-center justify-between text-xs transition"
                 >
                   <div className="flex items-center gap-2 truncate">
                     <span
@@ -112,7 +108,7 @@ export const Topbar: React.FC<TopbarProps> = ({
 
         {/* Right Section: Active Investigator & Logout */}
         <div className="flex items-center gap-3">
-          <div className="hidden lg:flex items-center gap-2.5 px-2.5 py-1 rounded bg-[#0a0a0a] border border-neutral-800 text-xs">
+          <div className="hidden lg:flex items-center gap-2.5 px-2.5 py-1 rounded bg-[#09090B] border border-neutral-800 text-xs">
             <div className="h-6 w-6 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center text-neutral-300">
               <User size={13} />
             </div>
@@ -129,12 +125,11 @@ export const Topbar: React.FC<TopbarProps> = ({
           {onToggleFilters && (
             <button
               onClick={onToggleFilters}
-              className={`btn-ghost text-xs py-1.5 px-2.5 flex items-center gap-1.5 ${
-                filtersOpen ? 'border-[#00629B] bg-[#00629B]/20 text-white' : ''
-              }`}
+              className={`btn-ghost text-xs py-1.5 px-2.5 flex items-center gap-1.5 ${filtersOpen ? 'border-white bg-white/5 text-white' : ''
+                }`}
               title="Toggle Investigation Filters"
             >
-              <SlidersHorizontal size={13} className="text-[#00629B]" />
+              <SlidersHorizontal size={13} className="text-white" />
               <span className="hidden sm:inline">Filters</span>
             </button>
           )}
@@ -142,7 +137,7 @@ export const Topbar: React.FC<TopbarProps> = ({
           <button
             onClick={onLogout}
             title="Logout from intelligence session"
-            className="btn-ghost text-xs py-1.5 px-2.5 text-neutral-400 hover:text-rose-400 hover:border-rose-900/50"
+            className="btn-ghost text-xs py-1.5 px-2.5 text-neutral-400 hover:text-neutral-400 hover:border-neutral-700"
             aria-label="Logout"
           >
             <LogOut size={13} />
@@ -156,11 +151,10 @@ export const Topbar: React.FC<TopbarProps> = ({
         <nav className="flex items-center gap-1">
           <button
             onClick={() => onNavigate?.('hub')}
-            className={`px-3 py-1 rounded transition flex items-center gap-1.5 text-[11px] ${
-              activeView === 'hub'
-                ? 'bg-[#00629B] text-white font-bold'
+            className={`px-3 py-1 rounded transition flex items-center gap-1.5 text-[11px] ${activeView === 'hub'
+                ? 'bg-white/5 text-white font-bold'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
-            }`}
+              }`}
           >
             <Home size={12} />
             <span>Command Hub</span>
@@ -168,11 +162,10 @@ export const Topbar: React.FC<TopbarProps> = ({
 
           <button
             onClick={() => onNavigate?.('directory')}
-            className={`px-3 py-1 rounded transition flex items-center gap-1.5 text-[11px] ${
-              activeView === 'directory'
-                ? 'bg-[#00629B] text-white font-bold'
+            className={`px-3 py-1 rounded transition flex items-center gap-1.5 text-[11px] ${activeView === 'directory'
+                ? 'bg-white/5 text-white font-bold'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
-            }`}
+              }`}
           >
             <BookOpen size={12} />
             <span>Criminal Directory</span>
@@ -180,11 +173,10 @@ export const Topbar: React.FC<TopbarProps> = ({
 
           <button
             onClick={() => onNavigate?.('workspace')}
-            className={`px-3 py-1 rounded transition flex items-center gap-1.5 text-[11px] ${
-              activeView === 'workspace'
-                ? 'bg-[#00629B] text-white font-bold'
+            className={`px-3 py-1 rounded transition flex items-center gap-1.5 text-[11px] ${activeView === 'workspace'
+                ? 'bg-white/5 text-white font-bold'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
-            }`}
+              }`}
           >
             <Network size={12} />
             <span>Investigation Workspace</span>
@@ -192,11 +184,10 @@ export const Topbar: React.FC<TopbarProps> = ({
 
           <button
             onClick={() => onNavigate?.('cases')}
-            className={`px-3 py-1 rounded transition flex items-center gap-1.5 text-[11px] ${
-              activeView === 'cases'
-                ? 'bg-[#00629B] text-white font-bold'
+            className={`px-3 py-1 rounded transition flex items-center gap-1.5 text-[11px] ${activeView === 'cases'
+                ? 'bg-white/5 text-white font-bold'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
-            }`}
+              }`}
           >
             <FileText size={12} />
             <span>Assigned Cases</span>
@@ -204,23 +195,21 @@ export const Topbar: React.FC<TopbarProps> = ({
 
           <button
             onClick={() => onNavigate?.('reports')}
-            className={`px-3 py-1 rounded transition flex items-center gap-1.5 text-[11px] ${
-              activeView === 'reports'
-                ? 'bg-[#00629B] text-white font-bold'
+            className={`px-3 py-1 rounded transition flex items-center gap-1.5 text-[11px] ${activeView === 'reports'
+                ? 'bg-white/5 text-white font-bold'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
-            }`}
+              }`}
           >
-            <ShieldAlert size={12} />
-            <span>Intelligence Reports</span>
+            <FileText size={12} />
+            <span>Case Reports</span>
           </button>
 
           <button
             onClick={() => onNavigate?.('audits')}
-            className={`px-3 py-1 rounded transition flex items-center gap-1.5 text-[11px] ${
-              activeView === 'audits'
-                ? 'bg-[#00629B] text-white font-bold'
+            className={`px-3 py-1 rounded transition flex items-center gap-1.5 text-[11px] ${activeView === 'audits'
+                ? 'bg-white/5 text-white font-bold'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
-            }`}
+              }`}
           >
             <Database size={12} />
             <span>Audit Logs</span>
@@ -230,7 +219,7 @@ export const Topbar: React.FC<TopbarProps> = ({
         {activeView === 'workspace' && (
           <button
             onClick={() => onNavigate?.('hub')}
-            className="text-[11px] text-neutral-400 hover:text-[#00629B] font-mono shrink-0 transition"
+            className="text-[11px] text-neutral-400 hover:text-white font-mono shrink-0 transition"
           >
             ← Back to Homepage option
           </button>

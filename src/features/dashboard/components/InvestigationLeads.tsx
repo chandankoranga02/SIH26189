@@ -16,7 +16,7 @@ export const InvestigationLeads: React.FC<InvestigationLeadsProps> = ({
     <div className="space-y-2">
       <div className="flex items-center justify-between text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
         <span className="flex items-center gap-1.5">
-          <Target size={14} className="text-rose-400" /> High-Priority Investigative Leads
+          <Target size={14} className="text-neutral-400" /> High-Priority Investigative Leads
         </span>
         <span className="text-[10px] text-slate-500">{highPriorityEntities.length} flagged subjects</span>
       </div>
@@ -29,7 +29,7 @@ export const InvestigationLeads: React.FC<InvestigationLeadsProps> = ({
             <button
               key={entity.id}
               onClick={() => onSelectEntity(entity.id)}
-              className="intel-card p-2.5 text-left flex items-center justify-between hover:border-cyan-400/40 transition group"
+              className="intel-card p-2.5 text-left flex items-center justify-between hover:border-neutral-700 transition group"
             >
               <div className="flex items-center gap-2.5 truncate">
                 <div
@@ -39,7 +39,7 @@ export const InvestigationLeads: React.FC<InvestigationLeadsProps> = ({
                   <Icon size={14} />
                 </div>
                 <div className="truncate">
-                  <div className="font-semibold text-white group-hover:text-cyan-300 text-xs truncate">
+                  <div className="font-semibold text-white group-hover:text-white text-xs truncate">
                     {entity.name}
                   </div>
                   <div className="text-[10px] text-slate-400 truncate">{entity.role || entity.id}</div>
@@ -47,7 +47,7 @@ export const InvestigationLeads: React.FC<InvestigationLeadsProps> = ({
               </div>
               <div className="flex items-center gap-1">
                 <span className="badge-high text-[10px]">{entity.basePriority}</span>
-                <ArrowRight size={12} className="text-slate-500 group-hover:text-cyan-400 transition" />
+                <ArrowRight size={12} className="text-slate-500 group-hover:text-white transition" />
               </div>
             </button>
           )

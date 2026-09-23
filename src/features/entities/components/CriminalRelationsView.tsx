@@ -126,7 +126,7 @@ export const CriminalRelationsView: React.FC<CriminalRelationsViewProps> = ({
       {/* List of Relationships */}
       <div className="space-y-2">
         {filteredRels.length === 0 ? (
-          <div className="p-8 text-center text-neutral-500 border border-neutral-800 bg-[#0a0a0a] rounded">
+          <div className="p-8 text-center text-neutral-500 border border-neutral-800 bg-[#09090B] rounded">
             No relationships found under category "{filterCategory}".
           </div>
         ) : (
@@ -137,12 +137,12 @@ export const CriminalRelationsView: React.FC<CriminalRelationsViewProps> = ({
               <div
                 key={r.id}
                 onClick={() => onSelectRel(r)}
-                className="intel-card hover:border-[#00629B] cursor-pointer transition p-3 space-y-2 group"
+                className="intel-card hover:border-white cursor-pointer transition p-3 space-y-2 group"
               >
                 {/* Header: Link Label & Confidence */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-[#00629B] font-bold">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-white font-bold">
                       {relationLabel}
                     </span>
                     <span className="text-[10px] text-neutral-400 font-mono">
@@ -185,7 +185,7 @@ export const CriminalRelationsView: React.FC<CriminalRelationsViewProps> = ({
                 {/* Footer action */}
                 <div className="pt-1.5 border-t border-neutral-900 flex items-center justify-between text-[10px] text-neutral-500 group-hover:text-neutral-300">
                   <span>Click to inspect link on network graph</span>
-                  <ChevronRight size={12} className="text-[#00629B] group-hover:translate-x-0.5 transition" />
+                  <ChevronRight size={12} className="text-white group-hover:translate-x-0.5 transition" />
                 </div>
               </div>
             )

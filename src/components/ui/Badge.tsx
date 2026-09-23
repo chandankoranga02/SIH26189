@@ -20,7 +20,7 @@ export const Badge: React.FC<BadgeProps> = ({
       : variant === 'low'
       ? 'badge-low'
       : variant === 'info'
-      ? 'border border-cyan-400/30 bg-cyan-400/10 text-cyan-200'
+      ? 'border border-neutral-700 bg-neutral-800 text-white'
       : 'badge-neutral'
 
   return (

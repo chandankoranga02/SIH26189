@@ -38,11 +38,11 @@ export const ReportModal: React.FC<ReportModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm overflow-y-auto">
-      <div className="intel-panel w-full max-w-4xl max-h-[92vh] flex flex-col bg-[#0a0a0a] border-neutral-800 shadow-2xl printable-report text-white">
+      <div className="intel-panel w-full max-w-4xl max-h-[92vh] flex flex-col bg-[#09090B] border-neutral-800 shadow-2xl printable-report text-white">
         {/* Modal Header */}
-        <div className="intel-header no-print border-b border-neutral-800 bg-[#050505] p-3 flex items-center justify-between">
+        <div className="intel-header no-print border-b border-neutral-800 bg-[#09090B] p-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <FileText size={18} className="text-[#00629B]" />
+            <FileText size={18} className="text-white" />
             <span className="text-sm font-bold text-white font-mono">
               INVESTIGATION DOSSIER & REPORT PREVIEW
             </span>
@@ -62,7 +62,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({
           {/* Official Banner */}
           <div className="border-b border-neutral-800 pb-5 flex flex-wrap items-start justify-between gap-4">
             <div>
-              <div className="text-[11px] font-black uppercase tracking-[0.25em] text-[#00629B] font-mono">
+              <div className="text-[11px] font-black uppercase tracking-[0.25em] text-white font-mono">
                 LINKTRACER INTELLIGENCE • CASE DOSSIER REPORT
               </div>
               <h1 className="text-2xl font-black text-white mt-1">
@@ -73,7 +73,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({
               </p>
             </div>
             <div className="text-right">
-              <div className="inline-block rounded border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-bold text-amber-300 font-mono">
+              <div className="inline-block rounded border border-neutral-700 bg-neutral-800 px-3 py-1 text-xs font-bold text-neutral-400 font-mono">
                 SYNTHETIC DEMO DATASET
               </div>
               <div className="text-[11px] text-neutral-500 mt-1 font-mono">
@@ -101,7 +101,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({
               <div className="text-[10px] uppercase font-bold tracking-wider text-neutral-400 font-mono">
                 Analytical Priority
               </div>
-              <div className="text-4xl font-black text-[#00629B] mt-1 font-mono">{priority.total} / 100</div>
+              <div className="text-4xl font-black text-white mt-1 font-mono">{priority.total} / 100</div>
               <div className="text-[10px] text-neutral-500 mt-1">Weighted Centrality & Signal Index</div>
             </div>
           </div>
@@ -120,7 +120,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({
                   </div>
                   <div className="mt-2 h-1.5 w-full rounded-full bg-neutral-900 overflow-hidden">
                     <div
-                      className="h-full bg-[#00629B] rounded-full"
+                      className="h-full bg-white/5 rounded-full"
                       style={{ width: `${(item.score / item.max) * 100}%` }}
                     />
                   </div>
@@ -137,7 +137,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({
             </div>
             <div className="intel-card border-neutral-800">
               <div className="text-[10px] text-neutral-400 uppercase font-mono">Total Call Interactions</div>
-              <div className="text-2xl font-bold text-[#00629B] mt-1 font-mono">{subjectCdrs.length}</div>
+              <div className="text-2xl font-bold text-white mt-1 font-mono">{subjectCdrs.length}</div>
             </div>
             <div className="intel-card border-neutral-800">
               <div className="text-[10px] text-neutral-400 uppercase font-mono">Aggregate Talk Duration</div>
@@ -145,7 +145,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({
             </div>
             <div className="intel-card border-neutral-800">
               <div className="text-[10px] text-neutral-400 uppercase font-mono">Linked Evidence Records</div>
-              <div className="text-2xl font-bold text-emerald-400 mt-1 font-mono">{subjectEvidences.length}</div>
+              <div className="text-2xl font-bold text-neutral-400 mt-1 font-mono">{subjectEvidences.length}</div>
             </div>
           </div>
 
@@ -156,19 +156,19 @@ export const ReportModal: React.FC<ReportModalProps> = ({
             </h3>
             <div className="space-y-2 text-xs">
               <div className="intel-card flex items-start gap-3 border-neutral-800">
-                <Check size={16} className="text-[#00629B] shrink-0 mt-0.5" />
+                <Check size={16} className="text-white shrink-0 mt-0.5" />
                 <span>
                   Subject maintains <strong className="text-white">{neighbors.length} heterogeneous links</strong> across operational entities, phones, and locations.
                 </span>
               </div>
               <div className="intel-card flex items-start gap-3 border-neutral-800">
-                <Check size={16} className="text-[#00629B] shrink-0 mt-0.5" />
+                <Check size={16} className="text-white shrink-0 mt-0.5" />
                 <span>
                   Observed in <strong className="text-white">{subjectCdrs.length} recorded telecommunication events</strong> totaling {fmtDuration(totalDuration)} of airtime.
                 </span>
               </div>
               <div className="intel-card flex items-start gap-3 border-neutral-800">
-                <Check size={16} className="text-[#00629B] shrink-0 mt-0.5" />
+                <Check size={16} className="text-white shrink-0 mt-0.5" />
                 <span>
                   Substantiated by <strong className="text-white">{subjectEvidences.length} independent synthetic evidence records</strong> across carrier CDRs, gate manifests, and FIR dossiers.
                 </span>
@@ -186,7 +186,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({
                 {subjectTimeline.slice(0, 6).map((tl: any) => (
                   <div key={tl.id} className="p-3 flex items-center justify-between gap-4">
                     <div className="flex items-center gap-3">
-                      <span className="text-[10px] font-mono text-[#00629B]">
+                      <span className="text-[10px] font-mono text-white">
                         {fmtDate(tl.date)} {tl.time}
                       </span>
                       <span className="font-semibold text-white">{tl.title || tl.description}</span>

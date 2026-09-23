@@ -48,25 +48,25 @@ export const CriminalProfileView: React.FC<CriminalProfileViewProps> = ({
   return (
     <div className="space-y-4 text-xs">
       {/* Criminal Mugshot & Header Box */}
-      <div className="border border-neutral-800 bg-[#0a0a0a] rounded p-3.5">
+      <div className="border border-neutral-800 bg-[#09090B] rounded p-3.5">
         <div className="flex items-start gap-3">
           {/* Mugshot Frame with Reticle overlay */}
           <div className="relative h-20 w-20 rounded border border-neutral-700 bg-neutral-900 flex flex-col items-center justify-center shrink-0 overflow-hidden group">
             <User size={36} className="text-neutral-500" />
-            <div className="absolute inset-0 border border-[#00629B]/30 pointer-events-none" />
+            <div className="absolute inset-0 border border-white/30 pointer-events-none" />
             <div className="absolute bottom-0 inset-x-0 bg-neutral-950/80 py-0.5 text-center text-[9px] font-mono text-neutral-400">
               {entity.id}
             </div>
             {/* Tactical crosshair corners */}
-            <div className="absolute top-0.5 left-0.5 w-1.5 h-1.5 border-t border-l border-[#00629B]" />
-            <div className="absolute top-0.5 right-0.5 w-1.5 h-1.5 border-t border-r border-[#00629B]" />
-            <div className="absolute bottom-0.5 left-0.5 w-1.5 h-1.5 border-b border-l border-[#00629B]" />
-            <div className="absolute bottom-0.5 right-0.5 w-1.5 h-1.5 border-b border-r border-[#00629B]" />
+            <div className="absolute top-0.5 left-0.5 w-1.5 h-1.5 border-t border-l border-white" />
+            <div className="absolute top-0.5 right-0.5 w-1.5 h-1.5 border-t border-r border-white" />
+            <div className="absolute bottom-0.5 left-0.5 w-1.5 h-1.5 border-b border-l border-white" />
+            <div className="absolute bottom-0.5 right-0.5 w-1.5 h-1.5 border-b border-r border-white" />
           </div>
 
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between gap-1">
-              <span className="text-[10px] uppercase font-mono text-[#00629B] font-bold">
+              <span className="text-[10px] uppercase font-mono text-white font-bold">
                 CRIMINAL RECORD / SUBJECT
               </span>
               <span className={entity.status === 'ACTIVE' ? 'badge-high' : entity.status === 'UNDER_REVIEW' ? 'badge-med' : 'badge-low'}>
@@ -89,7 +89,7 @@ export const CriminalProfileView: React.FC<CriminalProfileViewProps> = ({
           <div className="flex items-center gap-2">
             <div className="w-24 bg-neutral-900 rounded-full h-1.5 overflow-hidden border border-neutral-800">
               <div
-                className="h-full bg-[#00629B]"
+                className="h-full bg-white/5"
                 style={{ width: `${entity.basePriority || 60}%` }}
               />
             </div>
@@ -99,9 +99,9 @@ export const CriminalProfileView: React.FC<CriminalProfileViewProps> = ({
       </div>
 
       {/* Basic Information Section (Section 13 of PDF) */}
-      <div className="border border-neutral-800 bg-[#0a0a0a] rounded p-3 space-y-2.5">
+      <div className="border border-neutral-800 bg-[#09090B] rounded p-3 space-y-2.5">
         <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider font-mono flex items-center gap-1.5">
-          <Shield size={12} className="text-[#00629B]" />
+          <Shield size={12} className="text-white" />
           Basic Information
         </div>
 
@@ -132,7 +132,7 @@ export const CriminalProfileView: React.FC<CriminalProfileViewProps> = ({
           <div className="space-y-1 mt-1">
             {phones.map((p: string, idx: number) => (
               <div key={idx} className="flex items-center gap-1.5 text-neutral-300 font-mono text-[10px]">
-                <Phone size={11} className="text-[#00629B]" />
+                <Phone size={11} className="text-white" />
                 <span>{p}</span>
               </div>
             ))}
@@ -144,7 +144,7 @@ export const CriminalProfileView: React.FC<CriminalProfileViewProps> = ({
           <div className="space-y-1 mt-1">
             {addresses.map((addr: string, idx: number) => (
               <div key={idx} className="flex items-center gap-1.5 text-neutral-300 text-[10px]">
-                <MapPin size={11} className="text-emerald-400 shrink-0" />
+                <MapPin size={11} className="text-neutral-400 shrink-0" />
                 <span className="truncate">{addr}</span>
               </div>
             ))}
@@ -156,7 +156,7 @@ export const CriminalProfileView: React.FC<CriminalProfileViewProps> = ({
           <div className="space-y-1 mt-1">
             {vehicles.map((v: string, idx: number) => (
               <div key={idx} className="flex items-center gap-1.5 text-neutral-300 font-mono text-[10px]">
-                <Truck size={11} className="text-amber-400 shrink-0" />
+                <Truck size={11} className="text-neutral-400 shrink-0" />
                 <span className="truncate">{v}</span>
               </div>
             ))}
@@ -165,16 +165,16 @@ export const CriminalProfileView: React.FC<CriminalProfileViewProps> = ({
       </div>
 
       {/* Case Involvement Section (Section 13 of PDF) */}
-      <div className="border border-neutral-800 bg-[#0a0a0a] rounded p-3 space-y-2">
+      <div className="border border-neutral-800 bg-[#09090B] rounded p-3 space-y-2">
         <div className="flex items-center justify-between">
           <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider font-mono flex items-center gap-1.5">
-            <FileText size={12} className="text-[#00629B]" />
+            <FileText size={12} className="text-white" />
             Case Involvement
           </div>
           {onSwitchTab && (
             <button
               onClick={() => onSwitchTab('firs')}
-              className="text-[10px] text-[#00629B] hover:underline"
+              className="text-[10px] text-white hover:underline"
             >
               View FIR Dossiers →
             </button>
@@ -200,16 +200,16 @@ export const CriminalProfileView: React.FC<CriminalProfileViewProps> = ({
       </div>
 
       {/* Summary of Relationships */}
-      <div className="border border-neutral-800 bg-[#0a0a0a] rounded p-3 space-y-2">
+      <div className="border border-neutral-800 bg-[#09090B] rounded p-3 space-y-2">
         <div className="flex items-center justify-between">
           <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider font-mono flex items-center gap-1.5">
-            <Layers size={12} className="text-[#00629B]" />
+            <Layers size={12} className="text-white" />
             Relational Overview ({linkedRels.length} Connections)
           </div>
           {onSwitchTab && (
             <button
               onClick={() => onSwitchTab('relations')}
-              className="text-[10px] text-[#00629B] hover:underline"
+              className="text-[10px] text-white hover:underline"
             >
               Explore All Relations →
             </button>

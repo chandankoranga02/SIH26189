@@ -58,10 +58,10 @@ export const InspectorDossier: React.FC<InspectorDossierProps> = ({
   return (
     <div className="flex flex-col h-full bg-black text-white">
       {/* Dossier Top Navigation Tabs (Matching Wireframe Page 2 Left Panel) */}
-      <div className="border-b border-neutral-800 bg-[#050505] p-2">
+      <div className="border-b border-neutral-800 bg-[#09090B] p-2">
         <div className="flex items-center justify-between px-2 mb-2">
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#00629B]" />
+            <span className="h-2 w-2 rounded-full bg-white/5" />
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-neutral-400">
               INVESTIGATION DOSSIER
             </span>
@@ -72,7 +72,7 @@ export const InspectorDossier: React.FC<InspectorDossierProps> = ({
             className="btn-ghost text-[10px] py-1 px-2.5 flex items-center gap-1.5 hover:text-white"
             title="Generate Dossier Report"
           >
-            <Printer size={11} className="text-[#00629B]" />
+            <Printer size={11} className="text-white" />
             <span>Generate Report</span>
           </button>
         </div>
@@ -83,7 +83,7 @@ export const InspectorDossier: React.FC<InspectorDossierProps> = ({
             onClick={() => setActiveTab('profile')}
             className={`py-1.5 px-1 rounded text-center truncate transition ${
               activeTab === 'profile'
-                ? 'bg-[#00629B] text-white'
+                ? 'bg-white/5 text-white'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
             }`}
             title="Criminal Profile"
@@ -94,7 +94,7 @@ export const InspectorDossier: React.FC<InspectorDossierProps> = ({
             onClick={() => setActiveTab('relations')}
             className={`py-1.5 px-1 rounded text-center truncate transition ${
               activeTab === 'relations'
-                ? 'bg-[#00629B] text-white'
+                ? 'bg-white/5 text-white'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
             }`}
             title="Relation with different Criminals"
@@ -105,7 +105,7 @@ export const InspectorDossier: React.FC<InspectorDossierProps> = ({
             onClick={() => setActiveTab('calls')}
             className={`py-1.5 px-1 rounded text-center truncate transition ${
               activeTab === 'calls'
-                ? 'bg-[#00629B] text-white'
+                ? 'bg-white/5 text-white'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
             }`}
             title="Detailed Call records with audio play"
@@ -116,7 +116,7 @@ export const InspectorDossier: React.FC<InspectorDossierProps> = ({
             onClick={() => setActiveTab('firs')}
             className={`py-1.5 px-1 rounded text-center truncate transition ${
               activeTab === 'firs'
-                ? 'bg-[#00629B] text-white'
+                ? 'bg-white/5 text-white'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
             }`}
             title="FIRs Records"
@@ -127,7 +127,7 @@ export const InspectorDossier: React.FC<InspectorDossierProps> = ({
             onClick={() => setActiveTab('lineage')}
             className={`py-1.5 px-1 rounded text-center truncate transition ${
               activeTab === 'lineage'
-                ? 'bg-[#00629B] text-white'
+                ? 'bg-white/5 text-white'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
             }`}
             title="Evidence Lineage: Why was this relationship found?"

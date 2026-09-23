@@ -44,7 +44,7 @@ export const InvestigatorProfileCard: React.FC<InvestigatorProfileCardProps> = (
       <div>
         <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="h-2 w-2 rounded-full bg-neutral-800 animate-pulse" />
             <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">
               INVESTIGATOR PROFILE
             </span>
@@ -54,7 +54,7 @@ export const InvestigatorProfileCard: React.FC<InvestigatorProfileCardProps> = (
 
         <div className="mt-3.5 flex items-start gap-3">
           <div className="h-12 w-12 rounded border border-neutral-700 bg-neutral-900 flex items-center justify-center text-white font-bold text-base shrink-0">
-            <Shield size={22} className="text-[#00629B]" />
+            <Shield size={22} className="text-white" />
           </div>
           <div className="truncate">
             <h2 className="text-sm font-bold text-white tracking-wide truncate">{profile.name}</h2>
@@ -78,7 +78,7 @@ export const InvestigatorProfileCard: React.FC<InvestigatorProfileCardProps> = (
           </div>
           <div className="p-2 rounded bg-neutral-950 border border-neutral-800">
             <div className="text-[9px] uppercase font-bold text-neutral-400">PENDING REVIEWS</div>
-            <div className="text-xl font-black text-amber-400 mt-0.5">
+            <div className="text-xl font-black text-neutral-400 mt-0.5">
               {String(profile.pendingReviewsCount).padStart(2, '0')}
             </div>
           </div>
@@ -88,14 +88,14 @@ export const InvestigatorProfileCard: React.FC<InvestigatorProfileCardProps> = (
       {/* Recent Activity */}
       <div className="border-t border-neutral-800 pt-3">
         <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-2 flex items-center gap-1.5">
-          <Clock size={12} className="text-[#00629B]" /> RECENT ACTIVITY
+          <Clock size={12} className="text-white" /> RECENT ACTIVITY
         </div>
         <div className="space-y-2">
           {profile.recentActivities.map((act, idx) => (
             <div key={idx} className="text-[11px] text-neutral-300 flex items-start gap-2">
               <span className="text-[9px] font-mono text-neutral-500 shrink-0 mt-0.5">{act.time}</span>
               <span className="leading-snug text-neutral-400">
-                {act.action} {act.id && <span className="text-[#00629B] font-mono">[{act.id}]</span>}
+                {act.action} {act.id && <span className="text-white font-mono">[{act.id}]</span>}
               </span>
             </div>
           ))}

@@ -16,10 +16,10 @@ export const NetworkIntelligence: React.FC<NetworkIntelligenceProps> = ({
         <button
           key={cls.id}
           onClick={() => onSelectCluster(cls)}
-          className="intel-card p-3 text-left hover:border-cyan-400/30 transition"
+          className="intel-card p-3 text-left hover:border-neutral-700 transition"
         >
           <div className="flex items-center justify-between">
-            <span className="font-bold text-cyan-300">{cls.id}</span>
+            <span className="font-bold text-white">{cls.id}</span>
             <span className="badge-neutral text-[10px]">{cls.entityCount} Entities</span>
           </div>
           <div className="text-[11px] text-slate-300 mt-1">

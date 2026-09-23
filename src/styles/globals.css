@@ -229,3 +229,137 @@
     border-color: #cbd5e1 !important;
   }
 }
+
+/* ====================================================
+   D3 GRAPH STYLING — MONOCHROME THEME
+   ==================================================== */
+
+.d3-graph-svg {
+  cursor: grab;
+  user-select: none;
+}
+
+.d3-graph-svg:active {
+  cursor: grabbing;
+}
+
+/* Link transitions */
+.graph-link {
+  transition: stroke-opacity 0.3s ease, stroke-width 0.3s ease, stroke 0.3s ease;
+}
+
+.graph-link.link-highlighted {
+  stroke-opacity: 1 !important;
+  stroke-width: 2.5px !important;
+  stroke: #ffffff !important;
+}
+
+.graph-link.link-indirect {
+  stroke: #555555 !important;
+  stroke-dasharray: 4,3 !important;
+  stroke-opacity: 0.35 !important;
+  stroke-width: 1px !important;
+}
+
+/* Node styling & interactions */
+.graph-node {
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.15s ease;
+}
+
+.graph-node.node-dimmed {
+  opacity: 0.12 !important;
+}
+
+.graph-node.node-dimmed-deep {
+  opacity: 0.06 !important;
+}
+
+.graph-node.node-second-degree {
+  opacity: 0.5 !important;
+}
+
+.graph-node.node-neighbor {
+  opacity: 0.95 !important;
+}
+
+.graph-node.node-selected {
+  opacity: 1 !important;
+}
+
+.graph-node.node-spotlight {
+  opacity: 1 !important;
+}
+
+/* Selected node pulse halo — monochrome white */
+@keyframes pulseRing {
+  0% {
+    r: 28px;
+    opacity: 0.7;
+  }
+  50% {
+    r: 38px;
+    opacity: 0.15;
+  }
+  100% {
+    r: 28px;
+    opacity: 0.7;
+  }
+}
+
+.pulse-halo {
+  animation: pulseRing 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Edge label badges in SVG */
+.edge-label-text {
+  fill: #a1a1aa;
+  font-size: 9px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* Expand Hop Toggle Button on Graph Overlay */
+.expand-hop-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid #3f3f46;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  font-size: 11px;
+  font-weight: 600;
+  color: #a1a1aa;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.expand-hop-btn:hover {
+  border-color: #71717a;
+  color: #e4e4e7;
+  background: rgba(30, 30, 30, 0.95);
+}
+
+.expand-hop-btn-active {
+  border-color: #ffffff;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+.expand-hop-btn-active:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}

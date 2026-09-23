@@ -53,9 +53,9 @@ const DEFAULT_ALERTS: ThreatAlert[] = [
 
 export const InvestigationPulse: React.FC<InvestigationPulseProps> = ({ onSelectAlert }) => {
   return (
-    <div className="border-b border-neutral-800 bg-[#050505] px-4 py-1.5 flex items-center gap-3 overflow-hidden text-xs select-none">
-      <div className="flex items-center gap-1.5 shrink-0 px-2 py-0.5 rounded bg-rose-500/15 border border-rose-500/30 text-rose-300 font-bold text-[10px] tracking-wider uppercase threat-pulse font-mono">
-        <AlertTriangle size={12} className="text-rose-400 animate-pulse" /> Live Threat Feed
+    <div className="border-b border-neutral-800 bg-[#09090B] px-4 py-1.5 flex items-center gap-3 overflow-hidden text-xs select-none">
+      <div className="flex items-center gap-1.5 shrink-0 px-2 py-0.5 rounded bg-neutral-800 border border-neutral-700 text-neutral-400 font-bold text-[10px] tracking-wider uppercase threat-pulse font-mono">
+        <AlertTriangle size={12} className="text-neutral-400 animate-pulse" /> Live Threat Feed
       </div>
       <div className="overflow-hidden relative flex-1 flex items-center">
         <div className="ticker-scroll flex items-center gap-10 text-[11px] text-neutral-300">
@@ -63,15 +63,15 @@ export const InvestigationPulse: React.FC<InvestigationPulseProps> = ({ onSelect
             <button
               key={`${alt.id}-${i}`}
               onClick={() => onSelectAlert(alt.targetId)}
-              className="inline-flex items-center gap-2 hover:text-[#00629B] transition group shrink-0 text-left"
+              className="inline-flex items-center gap-2 hover:text-white transition group shrink-0 text-left"
             >
-              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-amber-300 group-hover:border-[#00629B] font-mono">
+              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-neutral-400 group-hover:border-white font-mono">
                 {alt.level}
               </span>
               <span className="text-neutral-300 group-hover:text-white">{alt.text}</span>
               <ArrowRight
                 size={11}
-                className="text-neutral-500 group-hover:text-[#00629B] group-hover:translate-x-0.5 transition"
+                className="text-neutral-500 group-hover:text-white group-hover:translate-x-0.5 transition"
               />
             </button>
           ))}

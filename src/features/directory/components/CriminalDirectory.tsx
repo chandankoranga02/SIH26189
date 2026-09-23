@@ -72,7 +72,7 @@ export const CriminalDirectory: React.FC<CriminalDirectoryProps> = ({
     <div className="flex-1 p-6 bg-black flex flex-col gap-6 overflow-y-auto max-w-7xl mx-auto w-full">
       {/* Header Banner */}
       <div>
-        <div className="flex items-center gap-2 text-xs font-mono uppercase text-[#00629B] font-bold">
+        <div className="flex items-center gap-2 text-xs font-mono uppercase text-white font-bold">
           <Search size={14} /> CRIMINAL DIRECTORY & HETEROGENEOUS ENTITY REGISTRY
         </div>
         <h1 className="text-xl font-bold text-white mt-1">
@@ -84,7 +84,7 @@ export const CriminalDirectory: React.FC<CriminalDirectoryProps> = ({
       </div>
 
       {/* Search Input Bar (Matching Wireframe: [ Search Rahul or Criminal ID 🔍 ]) */}
-      <div className="border border-neutral-800 bg-[#0a0a0a] rounded p-4">
+      <div className="border border-neutral-800 bg-[#09090B] rounded p-4">
         <div className="relative">
           <Search className="absolute left-3.5 top-3 text-neutral-500" size={16} />
           <input
@@ -92,7 +92,7 @@ export const CriminalDirectory: React.FC<CriminalDirectoryProps> = ({
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search Criminal ID or Name (e.g. Arjun, Sameer, P001, PH002, C004)..."
-            className="w-full rounded border border-neutral-800 bg-black pl-10 pr-4 py-2.5 text-xs text-white placeholder-neutral-500 outline-none focus:border-[#00629B] focus:ring-1 focus:ring-[#00629B]/40 font-medium"
+            className="w-full rounded border border-neutral-800 bg-black pl-10 pr-4 py-2.5 text-xs text-white placeholder-neutral-500 outline-none focus:border-white focus:ring-1 focus:ring-[#00629B]/40 font-medium"
           />
           {searchQuery && (
             <button
@@ -107,7 +107,7 @@ export const CriminalDirectory: React.FC<CriminalDirectoryProps> = ({
         {/* Filter Bar */}
         <div className="flex flex-wrap items-center gap-3 mt-3 pt-3 border-t border-neutral-900 text-xs">
           <div className="flex items-center gap-1.5 text-neutral-400">
-            <Filter size={12} className="text-[#00629B]" />
+            <Filter size={12} className="text-white" />
             <span className="font-semibold text-[11px]">Filter by:</span>
           </div>
 
@@ -166,7 +166,7 @@ export const CriminalDirectory: React.FC<CriminalDirectoryProps> = ({
       {/* Search Results List (Matching Wireframe Page 1) */}
       <div className="space-y-2">
         {filteredEntities.length === 0 ? (
-          <div className="p-12 text-center border border-neutral-800 bg-[#0a0a0a] rounded text-neutral-500">
+          <div className="p-12 text-center border border-neutral-800 bg-[#09090B] rounded text-neutral-500">
             <User size={32} className="mx-auto mb-2 text-neutral-600" />
             <p className="text-sm">No criminal records or subjects match query "{searchQuery}"</p>
             <button
@@ -176,7 +176,7 @@ export const CriminalDirectory: React.FC<CriminalDirectoryProps> = ({
                 setSelectedStatus('ALL')
                 setMinPriority(0)
               }}
-              className="mt-3 text-xs text-[#00629B] hover:underline"
+              className="mt-3 text-xs text-white hover:underline"
             >
               Reset all search filters
             </button>
@@ -191,16 +191,16 @@ export const CriminalDirectory: React.FC<CriminalDirectoryProps> = ({
               <div
                 key={ent.id}
                 onClick={() => onSelectCriminal(ent.id)}
-                className="intel-card hover:border-[#00629B] cursor-pointer transition p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group"
+                className="intel-card hover:border-white cursor-pointer transition p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group"
               >
                 {/* Left: Avatar & Identity */}
                 <div className="flex items-center gap-3.5">
-                  <div className="h-10 w-10 rounded border border-neutral-700 bg-neutral-900 flex items-center justify-center font-bold text-sm text-white shrink-0 group-hover:border-[#00629B]">
-                    <Icon size={18} className="text-[#00629B]" />
+                  <div className="h-10 w-10 rounded border border-neutral-700 bg-neutral-900 flex items-center justify-center font-bold text-sm text-white shrink-0 group-hover:border-white">
+                    <Icon size={18} className="text-white" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="text-sm font-bold text-white group-hover:text-[#00629B] transition">
+                      <h3 className="text-sm font-bold text-white group-hover:text-white transition">
                         {ent.name}
                       </h3>
                       <span className="badge-neutral text-[10px] font-mono">{ent.id}</span>
@@ -234,7 +234,7 @@ export const CriminalDirectory: React.FC<CriminalDirectoryProps> = ({
                     </div>
                     <div className="text-right">
                       <div className="text-[10px] text-neutral-500 uppercase">Priority</div>
-                      <div className="font-black text-[#00629B] text-sm">
+                      <div className="font-black text-white text-sm">
                         {ent.basePriority || 50}
                       </div>
                     </div>

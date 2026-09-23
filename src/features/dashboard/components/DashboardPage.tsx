@@ -270,7 +270,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onLogout }) => {
   }, [])
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col font-sans selection:bg-[#00629B]/40 selection:text-white">
+    <div className="min-h-screen bg-black text-white flex flex-col font-sans selection:bg-white/5 selection:text-white">
       {/* 1. TOP OPERATIONAL HEADER (Wireframe Header with LinkTracer, Search, Links, Logout) */}
       <Topbar
         activeView={activeView}
@@ -347,7 +347,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onLogout }) => {
         {activeView === 'workspace' && (
           <div className="flex-1 grid grid-cols-1 lg:grid-cols-[380px_1fr_340px] overflow-hidden w-full">
             {/* LEFT COLUMN: INVESTIGATION DOSSIER & SUBVIEWS */}
-            <section className="border-r border-neutral-800 bg-[#050505] flex flex-col overflow-hidden max-h-[calc(100vh-80px)]">
+            <section className="border-r border-neutral-800 bg-[#09090B] flex flex-col overflow-hidden max-h-[calc(100vh-80px)]">
               {selectedEntity ? (
                 <InspectorDossier
                   entity={selectedEntity}
@@ -427,9 +427,9 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onLogout }) => {
         {/* FILTER SLIDE-OUT PANEL (Triggered from Topbar "Filters") */}
         {filtersOpen && (
           <div className="fixed inset-y-0 left-0 z-50 w-80 shadow-2xl bg-black border-r border-neutral-800 flex flex-col animate-fade-in">
-            <div className="flex items-center justify-between p-3 border-b border-neutral-800 bg-[#050505]">
+            <div className="flex items-center justify-between p-3 border-b border-neutral-800 bg-[#09090B]">
               <div className="flex items-center gap-2">
-                <SlidersHorizontal size={14} className="text-[#00629B]" />
+                <SlidersHorizontal size={14} className="text-white" />
                 <span className="font-mono text-xs font-bold uppercase text-white">
                   INVESTIGATION FILTERS
                 </span>
@@ -491,14 +491,14 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onLogout }) => {
         <div className="flex items-center gap-4">
           {selectedEntity && (
             <span>
-              Target: <strong className="text-[#00629B]">{selectedEntity.name} ({selectedEntity.id})</strong>
+              Target: <strong className="text-white">{selectedEntity.name} ({selectedEntity.id})</strong>
             </span>
           )}
           <span>
-            Console: <strong className="text-emerald-400 font-semibold">ACTIVE</strong>
+            Console: <strong className="text-neutral-400 font-semibold">ACTIVE</strong>
           </span>
           <span>
-            Classification: <strong className="text-amber-400">DEMO INTEL</strong>
+            Classification: <strong className="text-neutral-400">DEMO INTEL</strong>
           </span>
         </div>
       </footer>

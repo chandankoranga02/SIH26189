@@ -37,9 +37,9 @@ export const RightIntelligencePanel: React.FC<RightIntelligencePanelProps> = ({
   return (
     <aside className="border-l border-neutral-800 bg-black flex flex-col h-full overflow-y-auto text-xs text-white">
       {/* Header */}
-      <div className="border-b border-neutral-800 bg-[#050505] p-3 flex items-center justify-between">
+      <div className="border-b border-neutral-800 bg-[#09090B] p-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-[#00629B]" />
+          <span className="h-2 w-2 rounded-full bg-white/5" />
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-neutral-300">
             INTELLIGENCE ANALYTICS & PATTERNS
           </span>
@@ -59,7 +59,7 @@ export const RightIntelligencePanel: React.FC<RightIntelligencePanelProps> = ({
 
           <div className="space-y-2.5">
             {patterns.length === 0 ? (
-              <div className="p-4 text-center text-neutral-500 border border-neutral-800 bg-[#0a0a0a] rounded">
+              <div className="p-4 text-center text-neutral-500 border border-neutral-800 bg-[#09090B] rounded">
                 No active pattern rules triggered.
               </div>
             ) : (
@@ -69,11 +69,11 @@ export const RightIntelligencePanel: React.FC<RightIntelligencePanelProps> = ({
                 return (
                   <div
                     key={pat.id}
-                    className="intel-card p-3 space-y-2 border-neutral-800 hover:border-[#00629B] transition"
+                    className="intel-card p-3 space-y-2 border-neutral-800 hover:border-white transition"
                   >
                     <div className="flex items-center justify-between">
                       <div className="font-bold text-neutral-200 flex items-center gap-1.5 text-xs">
-                        <AlertTriangle size={12} className="text-[#00629B]" />
+                        <AlertTriangle size={12} className="text-white" />
                         <span>{pat.name}</span>
                       </div>
                       <span className="badge-high font-mono text-[9px]">
@@ -89,7 +89,7 @@ export const RightIntelligencePanel: React.FC<RightIntelligencePanelProps> = ({
                       <span>Sources: {pat.sources?.join(' • ') || 'CDR • Timeline'}</span>
                       <button
                         onClick={() => onSelectPattern(pat)}
-                        className="btn-ghost text-[10px] py-0.5 px-2 text-[#00629B] border-neutral-800 hover:text-white"
+                        className="btn-ghost text-[10px] py-0.5 px-2 text-white border-neutral-800 hover:text-white"
                       >
                         [ Investigate ]
                       </button>
@@ -114,7 +114,7 @@ export const RightIntelligencePanel: React.FC<RightIntelligencePanelProps> = ({
           <div className="intel-card p-3 space-y-2 border-neutral-800">
             <div className="flex items-center justify-between">
               <span className="text-neutral-400 text-[11px]">Bridge Centrality Metric:</span>
-              <span className="font-bold font-mono text-[#00629B] text-xs">
+              <span className="font-bold font-mono text-white text-xs">
                 {selectedEntity ? bridgeScores[selectedEntity.id] || 65 : 78} / 100
               </span>
             </div>
@@ -134,7 +134,7 @@ export const RightIntelligencePanel: React.FC<RightIntelligencePanelProps> = ({
                 <div
                   key={cl.id || i}
                   onClick={() => cl.entities[0] && onSelectEntity(cl.entities[0])}
-                  className="flex items-center justify-between p-1.5 rounded bg-black border border-neutral-900 cursor-pointer hover:border-[#00629B] transition text-[10px]"
+                  className="flex items-center justify-between p-1.5 rounded bg-black border border-neutral-900 cursor-pointer hover:border-white transition text-[10px]"
                 >
                   <span className="text-neutral-300 font-medium">{cl.label || `Cluster ${i + 1}`}</span>
                   <span className="text-neutral-500 font-mono">{cl.entities.length} Nodes</span>

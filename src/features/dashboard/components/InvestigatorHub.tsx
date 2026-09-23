@@ -39,10 +39,10 @@ export const InvestigatorHub: React.FC<InvestigatorHubProps> = ({
   return (
     <div className="flex-1 p-6 bg-black flex flex-col gap-6 overflow-y-auto max-w-7xl mx-auto w-full">
       {/* Welcome Banner */}
-      <div className="border border-neutral-800 bg-[#0a0a0a] rounded p-5 flex flex-wrap items-center justify-between gap-4">
+      <div className="border border-neutral-800 bg-[#09090B] rounded p-5 flex flex-wrap items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono uppercase text-[#00629B] font-bold">
-            <span className="h-2 w-2 rounded-full bg-[#00629B]" /> LAW ENFORCEMENT INTELLIGENCE COMMAND
+          <div className="flex items-center gap-2 text-xs font-mono uppercase text-white font-bold">
+            <span className="h-2 w-2 rounded-full bg-white/5" /> LAW ENFORCEMENT INTELLIGENCE COMMAND
           </div>
           <h1 className="text-xl font-bold text-white mt-1">
             Criminal Network Analysis & Investigation Workstation
@@ -75,16 +75,16 @@ export const InvestigatorHub: React.FC<InvestigatorHubProps> = ({
             {/* 1. Criminals Assigned */}
             <div
               onClick={() => onNavigate('cases')}
-              className="intel-card p-5 cursor-pointer hover:border-[#00629B] group flex flex-col justify-between"
+              className="intel-card p-5 cursor-pointer hover:border-white group flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <div className="p-2 rounded bg-neutral-900 border border-neutral-800 text-[#00629B] group-hover:border-[#00629B]">
+                  <div className="p-2 rounded bg-neutral-900 border border-neutral-800 text-white group-hover:border-white">
                     <FileText size={20} />
                   </div>
                   <span className="badge-accent">{assignedCasesCount} CASES</span>
                 </div>
-                <h3 className="text-base font-bold text-white mt-4 group-hover:text-[#00629B] transition">
+                <h3 className="text-base font-bold text-white mt-4 group-hover:text-white transition">
                   Criminals Assigned
                 </h3>
                 <p className="text-xs text-neutral-400 mt-1">
@@ -93,23 +93,23 @@ export const InvestigatorHub: React.FC<InvestigatorHubProps> = ({
               </div>
               <div className="mt-4 pt-3 border-t border-neutral-900 flex items-center justify-between text-xs text-neutral-400 group-hover:text-white">
                 <span>Open Assigned Cases</span>
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition text-[#00629B]" />
+                <ArrowRight size={13} className="group-hover:translate-x-1 transition text-white" />
               </div>
             </div>
 
             {/* 2. Criminals Reports */}
             <div
               onClick={() => onNavigate('reports')}
-              className="intel-card p-5 cursor-pointer hover:border-[#00629B] group flex flex-col justify-between"
+              className="intel-card p-5 cursor-pointer hover:border-white group flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <div className="p-2 rounded bg-neutral-900 border border-neutral-800 text-[#00629B] group-hover:border-[#00629B]">
+                  <div className="p-2 rounded bg-neutral-900 border border-neutral-800 text-white group-hover:border-white">
                     <Target size={20} />
                   </div>
                   <span className="badge-accent">DOSSIERS</span>
                 </div>
-                <h3 className="text-base font-bold text-white mt-4 group-hover:text-[#00629B] transition">
+                <h3 className="text-base font-bold text-white mt-4 group-hover:text-white transition">
                   Criminals Reports
                 </h3>
                 <p className="text-xs text-neutral-400 mt-1">
@@ -118,23 +118,23 @@ export const InvestigatorHub: React.FC<InvestigatorHubProps> = ({
               </div>
               <div className="mt-4 pt-3 border-t border-neutral-900 flex items-center justify-between text-xs text-neutral-400 group-hover:text-white">
                 <span>View Intelligence Reports</span>
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition text-[#00629B]" />
+                <ArrowRight size={13} className="group-hover:translate-x-1 transition text-white" />
               </div>
             </div>
 
             {/* 3. Directory */}
             <div
               onClick={() => onNavigate('directory')}
-              className="intel-card p-5 cursor-pointer hover:border-[#00629B] group flex flex-col justify-between"
+              className="intel-card p-5 cursor-pointer hover:border-white group flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <div className="p-2 rounded bg-neutral-900 border border-neutral-800 text-[#00629B] group-hover:border-[#00629B]">
+                  <div className="p-2 rounded bg-neutral-900 border border-neutral-800 text-white group-hover:border-white">
                     <Search size={20} />
                   </div>
                   <span className="badge-accent">{totalEntitiesCount} ENTITIES</span>
                 </div>
-                <h3 className="text-base font-bold text-white mt-4 group-hover:text-[#00629B] transition">
+                <h3 className="text-base font-bold text-white mt-4 group-hover:text-white transition">
                   Criminal Directory
                 </h3>
                 <p className="text-xs text-neutral-400 mt-1">
@@ -143,23 +143,23 @@ export const InvestigatorHub: React.FC<InvestigatorHubProps> = ({
               </div>
               <div className="mt-4 pt-3 border-t border-neutral-900 flex items-center justify-between text-xs text-neutral-400 group-hover:text-white">
                 <span>Search Criminal Records</span>
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition text-[#00629B]" />
+                <ArrowRight size={13} className="group-hover:translate-x-1 transition text-white" />
               </div>
             </div>
 
             {/* 4. Audits */}
             <div
               onClick={() => onNavigate('audits')}
-              className="intel-card p-5 cursor-pointer hover:border-[#00629B] group flex flex-col justify-between"
+              className="intel-card p-5 cursor-pointer hover:border-white group flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <div className="p-2 rounded bg-neutral-900 border border-neutral-800 text-[#00629B] group-hover:border-[#00629B]">
+                  <div className="p-2 rounded bg-neutral-900 border border-neutral-800 text-white group-hover:border-white">
                     <Activity size={20} />
                   </div>
                   <span className="badge-accent">FORENSIC</span>
                 </div>
-                <h3 className="text-base font-bold text-white mt-4 group-hover:text-[#00629B] transition">
+                <h3 className="text-base font-bold text-white mt-4 group-hover:text-white transition">
                   Audits & Integrity Logs
                 </h3>
                 <p className="text-xs text-neutral-400 mt-1">
@@ -168,7 +168,7 @@ export const InvestigatorHub: React.FC<InvestigatorHubProps> = ({
               </div>
               <div className="mt-4 pt-3 border-t border-neutral-900 flex items-center justify-between text-xs text-neutral-400 group-hover:text-white">
                 <span>Inspect Audit Trail</span>
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition text-[#00629B]" />
+                <ArrowRight size={13} className="group-hover:translate-x-1 transition text-white" />
               </div>
             </div>
           </div>
@@ -177,7 +177,7 @@ export const InvestigatorHub: React.FC<InvestigatorHubProps> = ({
           <div className="intel-panel p-4">
             <div className="flex items-center justify-between mb-3 border-b border-neutral-800 pb-2.5">
               <span className="text-xs font-bold uppercase tracking-wider text-neutral-300 flex items-center gap-1.5">
-                <Target size={14} className="text-[#00629B]" /> PRIORITY TARGETS FOR INVESTIGATION
+                <Target size={14} className="text-white" /> PRIORITY TARGETS FOR INVESTIGATION
               </span>
               <span className="text-[10px] text-neutral-500 font-mono">
                 {highPriorityCount} HIGH PRIORITY
@@ -192,7 +192,7 @@ export const InvestigatorHub: React.FC<InvestigatorHubProps> = ({
                     onSelectEntity(ent.id)
                     onNavigate('workspace')
                   }}
-                  className="p-2.5 rounded bg-neutral-950 border border-neutral-800 hover:border-[#00629B] cursor-pointer transition flex items-center justify-between"
+                  className="p-2.5 rounded bg-neutral-950 border border-neutral-800 hover:border-white cursor-pointer transition flex items-center justify-between"
                 >
                   <div className="truncate">
                     <div className="text-xs font-bold text-white truncate">{ent.name}</div>

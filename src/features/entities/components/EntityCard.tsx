@@ -22,7 +22,7 @@ export const EntityCard: React.FC<EntityCardProps> = ({
     <div
       onClick={() => onSelect?.(entity.id)}
       className={`intel-card p-3 cursor-pointer transition flex items-center justify-between ${
-        isSelected ? 'border-[#00629B] bg-[#00629B]/20' : 'hover:border-neutral-700'
+        isSelected ? 'border-white bg-white/5' : 'hover:border-neutral-700'
       } ${className}`}
     >
       <div className="flex items-center gap-2.5 truncate">

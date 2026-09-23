@@ -54,15 +54,15 @@ export const ActivityHeatmapTimeline: React.FC<ActivityHeatmapTimelineProps> = (
   }, [])
 
   return (
-    <div className="border-t border-neutral-800 bg-[#050505] px-3 py-1.5 flex items-center gap-3 text-xs select-none">
+    <div className="border-t border-neutral-800 bg-[#09090B] px-3 py-1.5 flex items-center gap-3 text-xs select-none">
       <div className="flex items-center gap-2 shrink-0">
         <button
           onClick={onPlayToggle}
           title={isPlaying ? 'Pause Timeline Investigation' : 'Play Day-by-Day Timeline Simulation'}
           className={`flex items-center gap-1.5 px-2.5 py-1 rounded text-[10px] font-bold transition shadow-sm ${
             isPlaying
-              ? 'bg-amber-400 text-black animate-pulse font-black'
-              : 'bg-[#00629B] text-white hover:bg-[#0077bd] border border-[#0077bd]/50'
+              ? 'bg-neutral-800 text-black animate-pulse font-black'
+              : 'bg-white/5 text-white hover:bg-[#0077bd] border border-[#0077bd]/50'
           }`}
         >
           {isPlaying ? <Pause size={11} /> : <Play size={11} />}
@@ -104,7 +104,7 @@ export const ActivityHeatmapTimeline: React.FC<ActivityHeatmapTimelineProps> = (
 
       <div className="shrink-0 flex items-center gap-2">
         {currentPlayDate ? (
-          <div className="text-[10px] font-mono text-amber-300 font-bold bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/25 animate-pulse">
+          <div className="text-[10px] font-mono text-neutral-400 font-bold bg-neutral-800 px-2 py-0.5 rounded border border-neutral-700 animate-pulse">
             {currentPlayDate}
           </div>
         ) : (

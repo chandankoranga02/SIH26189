@@ -28,7 +28,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
       {/* Top Header */}
       <header className="flex items-center justify-between border-b border-neutral-800 pb-4">
         <div className="flex items-center gap-3">
-          <div className="rounded bg-[#00629B] p-2 text-white font-bold">
+          <div className="rounded bg-white/5 p-2 text-white font-bold">
             <Shield size={18} />
           </div>
           <div>
@@ -41,17 +41,17 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
         </div>
 
         <div className="hidden sm:flex items-center gap-2 text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="h-1.5 w-1.5 rounded-full bg-neutral-800 animate-pulse" />
           SECURE TERMINAL • NODE 01
         </div>
       </header>
 
       {/* Center Auth Container */}
       <div className="flex-1 flex items-center justify-center py-12">
-        <div className="w-full max-w-sm border border-neutral-800 bg-[#0a0a0a] rounded p-8 shadow-2xl">
+        <div className="w-full max-w-sm border border-neutral-800 bg-[#09090B] rounded p-8 shadow-2xl">
           <div className="text-center mb-6">
             <div className="inline-flex p-2.5 rounded bg-neutral-900 border border-neutral-800 text-neutral-300 mb-3">
-              <Lock size={20} className="text-[#00629B]" />
+              <Lock size={20} className="text-white" />
             </div>
             <h1 className="text-lg font-bold text-white tracking-wide uppercase">
               Operator Authentication
@@ -113,7 +113,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
             </div>
 
             {error && (
-              <div className="rounded border border-rose-900/50 bg-rose-950/40 p-2.5 text-xs text-rose-300 flex items-center gap-2">
+              <div className="rounded border border-neutral-700 bg-neutral-800 p-2.5 text-xs text-neutral-400 flex items-center gap-2">
                 <AlertTriangle size={14} />
                 <span>{error}</span>
               </div>
@@ -121,7 +121,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
             <button
               type="submit"
-              className="w-full bg-[#00629B] hover:bg-[#0077bd] text-white font-bold py-2 rounded text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-sm active:scale-[0.99]"
+              className="w-full bg-white/5 hover:bg-[#0077bd] text-white font-bold py-2 rounded text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-sm active:scale-[0.99]"
             >
               <span>Login</span>
               <ArrowRight size={14} />

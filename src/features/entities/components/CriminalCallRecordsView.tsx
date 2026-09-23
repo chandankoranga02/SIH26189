@@ -66,10 +66,10 @@ export const CriminalCallRecordsView: React.FC<CriminalCallRecordsViewProps> = (
   return (
     <div className="space-y-4 text-xs">
       {/* Interactive Wiretap Audio Player Simulation Box */}
-      <div className="border border-neutral-800 bg-[#0a0a0a] rounded p-4 space-y-3">
+      <div className="border border-neutral-800 bg-[#09090B] rounded p-4 space-y-3">
         <div className="flex items-center justify-between border-b border-neutral-900 pb-2">
           <div className="flex items-center gap-2">
-            <Radio size={14} className="text-[#00629B] animate-pulse" />
+            <Radio size={14} className="text-white animate-pulse" />
             <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-white">
               LEGAL WIRETAP & TELEPHONY INTERCEPT PLAYER
             </span>
@@ -83,7 +83,7 @@ export const CriminalCallRecordsView: React.FC<CriminalCallRecordsViewProps> = (
             <div className="flex items-center gap-2">
               <button
                 onClick={() => activeCdr && handleTogglePlay(activeCdr.id)}
-                className="h-8 w-8 rounded bg-[#00629B] hover:bg-[#0077bd] text-white flex items-center justify-center transition"
+                className="h-8 w-8 rounded bg-white/5 hover:bg-[#0077bd] text-white flex items-center justify-center transition"
                 title={playingCdrId ? 'Pause playback' : 'Play intercept audio'}
               >
                 {playingCdrId ? <Pause size={14} /> : <Play size={14} className="ml-0.5" />}
@@ -99,7 +99,7 @@ export const CriminalCallRecordsView: React.FC<CriminalCallRecordsViewProps> = (
             </div>
 
             <div className="flex items-center gap-3">
-              <span className="font-mono text-xs text-[#00629B] font-bold">
+              <span className="font-mono text-xs text-white font-bold">
                 00:{String(playbackSeconds).padStart(2, '0')} / 00:45
               </span>
               <button
@@ -135,7 +135,7 @@ export const CriminalCallRecordsView: React.FC<CriminalCallRecordsViewProps> = (
 
           {/* Transcript Snippet */}
           <div className="p-2 rounded bg-neutral-950 border border-neutral-900 text-[11px] text-neutral-300 font-mono">
-            <span className="text-[#00629B] font-bold block text-[10px] uppercase mb-0.5">
+            <span className="text-white font-bold block text-[10px] uppercase mb-0.5">
               Live Intercept Transcription:
             </span>
             <p className="italic text-neutral-300">
@@ -153,7 +153,7 @@ export const CriminalCallRecordsView: React.FC<CriminalCallRecordsViewProps> = (
         </div>
 
         {subjectCdrs.length === 0 ? (
-          <div className="p-8 text-center text-neutral-500 border border-neutral-800 bg-[#0a0a0a] rounded">
+          <div className="p-8 text-center text-neutral-500 border border-neutral-800 bg-[#09090B] rounded">
             No CDR records logged for this entity in the active filter range.
           </div>
         ) : (
@@ -167,7 +167,7 @@ export const CriminalCallRecordsView: React.FC<CriminalCallRecordsViewProps> = (
               <div
                 key={c.id}
                 className={`intel-card p-3 space-y-2 transition ${
-                  isCurrentPlaying ? 'border-[#00629B] bg-[#00629B]/10' : 'hover:border-neutral-700'
+                  isCurrentPlaying ? 'border-white bg-white/5' : 'hover:border-neutral-700'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -205,7 +205,7 @@ export const CriminalCallRecordsView: React.FC<CriminalCallRecordsViewProps> = (
                   <button
                     onClick={() => handleTogglePlay(c.id)}
                     className={`btn-ghost text-[10px] py-1 px-2 flex items-center gap-1 ${
-                      isCurrentPlaying ? 'bg-[#00629B] text-white border-[#00629B]' : ''
+                      isCurrentPlaying ? 'bg-white/5 text-white border-white' : ''
                     }`}
                   >
                     {isCurrentPlaying ? <Pause size={10} /> : <Play size={10} />}

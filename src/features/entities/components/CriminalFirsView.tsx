@@ -29,10 +29,10 @@ export const CriminalFirsView: React.FC<CriminalFirsViewProps> = ({
   return (
     <div className="space-y-4 text-xs">
       {/* FIR Header Banner */}
-      <div className="border border-neutral-800 bg-[#0a0a0a] rounded p-3.5 space-y-2">
+      <div className="border border-neutral-800 bg-[#09090B] rounded p-3.5 space-y-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <FileText size={15} className="text-[#00629B]" />
+            <FileText size={15} className="text-white" />
             <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-white">
               REGISTERED FIRST INFORMATION REPORTS (FIR) & CHARGES
             </span>
@@ -49,7 +49,7 @@ export const CriminalFirsView: React.FC<CriminalFirsViewProps> = ({
         {linkedCases.map(cs => (
           <div
             key={cs.id}
-            className="intel-card p-3.5 space-y-2.5 border-neutral-800 hover:border-[#00629B] transition"
+            className="intel-card p-3.5 space-y-2.5 border-neutral-800 hover:border-white transition"
           >
             {/* Top row: Case Number & Status */}
             <div className="flex items-center justify-between">
@@ -70,7 +70,7 @@ export const CriminalFirsView: React.FC<CriminalFirsViewProps> = ({
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-neutral-500">Offence / Section:</span>
-                <span className="text-rose-400 font-mono font-bold text-[10px]">{(cs as any).offence || 'Sec 420 / 120B IPC'}</span>
+                <span className="text-neutral-400 font-mono font-bold text-[10px]">{(cs as any).offence || 'Sec 420 / 120B IPC'}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-neutral-500">Filing Date:</span>
@@ -86,7 +86,7 @@ export const CriminalFirsView: React.FC<CriminalFirsViewProps> = ({
             {/* Action Bar */}
             <div className="pt-2 border-t border-neutral-900 flex items-center justify-between">
               <div className="flex items-center gap-1.5 text-neutral-500 font-mono text-[10px]">
-                <Scale size={12} className="text-[#00629B]" />
+                <Scale size={12} className="text-white" />
                 <span>Court Jurisdiction: Northern Metropolitan Court</span>
               </div>
 

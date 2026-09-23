@@ -22,7 +22,7 @@ export const Button: React.FC<ButtonProps> = ({
   } else if (variant === 'icon') {
     baseClass = 'btn-icon'
   } else if (variant === 'danger') {
-    baseClass = 'inline-flex items-center justify-center gap-2 rounded-lg bg-rose-500/20 text-rose-300 border border-rose-500/30 px-3 py-1.5 text-xs font-semibold hover:bg-rose-500/30'
+    baseClass = 'inline-flex items-center justify-center gap-2 rounded-lg bg-neutral-800 text-neutral-400 border border-neutral-700 px-3 py-1.5 text-xs font-semibold hover:bg-neutral-800'
   }
 
   const sizeClass = size === 'sm' ? 'text-[11px] py-1 px-2.5' : size === 'lg' ? 'text-sm py-2.5 px-4' : ''

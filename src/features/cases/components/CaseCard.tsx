@@ -17,11 +17,11 @@ export const CaseCard: React.FC<CaseCardProps> = ({
     <div
       onClick={() => onSelect?.(caseItem.id)}
       className={`intel-card p-3.5 cursor-pointer transition flex items-center justify-between ${
-        isSelected ? 'border-cyan-400 bg-cyan-950/20' : 'hover:border-white/20'
+        isSelected ? 'border-neutral-700 bg-neutral-800' : 'hover:border-white/20'
       }`}
     >
       <div className="flex items-center gap-3 truncate">
-        <div className="rounded-lg p-2 bg-rose-500/10 text-rose-400 border border-rose-500/20">
+        <div className="rounded-lg p-2 bg-neutral-800 text-neutral-400 border border-neutral-700">
           <FileText size={16} />
         </div>
         <div className="truncate">

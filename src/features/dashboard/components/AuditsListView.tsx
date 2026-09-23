@@ -28,7 +28,7 @@ export const AuditsListView: React.FC<AuditsListViewProps> = ({ auditLog }) => {
     <div className="flex-1 p-6 bg-black flex flex-col gap-6 overflow-y-auto max-w-7xl mx-auto w-full text-white">
       {/* Header */}
       <div>
-        <div className="flex items-center gap-2 text-xs font-mono uppercase text-[#00629B] font-bold">
+        <div className="flex items-center gap-2 text-xs font-mono uppercase text-white font-bold">
           <Database size={14} />
           <span>SECURITY & FORENSIC AUDIT TRAIL</span>
         </div>
@@ -41,7 +41,7 @@ export const AuditsListView: React.FC<AuditsListViewProps> = ({ auditLog }) => {
       </div>
 
       {/* Filter and stats banner */}
-      <div className="border border-neutral-800 bg-[#0a0a0a] rounded p-3.5 flex flex-wrap items-center justify-between gap-4 text-xs">
+      <div className="border border-neutral-800 bg-[#09090B] rounded p-3.5 flex flex-wrap items-center justify-between gap-4 text-xs">
         <div className="relative flex-1 min-w-[260px]">
           <Search className="absolute left-3 top-2.5 text-neutral-500" size={14} />
           <input
@@ -58,13 +58,13 @@ export const AuditsListView: React.FC<AuditsListViewProps> = ({ auditLog }) => {
             Total Entries: <span className="text-white font-bold">{fullLogs.length}</span>
           </div>
           <div>
-            Session: <span className="text-emerald-400 font-bold">COMPLIANT</span>
+            Session: <span className="text-neutral-400 font-bold">COMPLIANT</span>
           </div>
         </div>
       </div>
 
       {/* Logs Terminal View */}
-      <div className="border border-neutral-800 bg-[#050505] rounded p-4 font-mono text-xs space-y-2">
+      <div className="border border-neutral-800 bg-[#09090B] rounded p-4 font-mono text-xs space-y-2">
         <div className="flex items-center justify-between border-b border-neutral-900 pb-2 text-[10px] text-neutral-500 uppercase tracking-wider">
           <span>Timestamp</span>
           <span>Logged Action & Data Provenance</span>
@@ -78,7 +78,7 @@ export const AuditsListView: React.FC<AuditsListViewProps> = ({ auditLog }) => {
               className="flex items-start justify-between gap-4 p-2 rounded hover:bg-neutral-900/60 transition"
             >
               <div className="flex items-center gap-2 text-neutral-500 text-[11px] shrink-0">
-                <Clock size={12} className="text-[#00629B]" />
+                <Clock size={12} className="text-white" />
                 <span>{log.time}</span>
               </div>
 
@@ -86,7 +86,7 @@ export const AuditsListView: React.FC<AuditsListViewProps> = ({ auditLog }) => {
                 {log.text}
               </div>
 
-              <div className="flex items-center gap-1 text-emerald-400 text-[10px] shrink-0">
+              <div className="flex items-center gap-1 text-neutral-400 text-[10px] shrink-0">
                 <ShieldCheck size={12} />
                 <span>VERIFIED</span>
               </div>

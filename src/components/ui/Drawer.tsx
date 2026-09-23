@@ -57,13 +57,13 @@ export const Drawer: React.FC<DrawerProps> = ({
           <div className="flex items-center justify-between border-b border-white/10 pb-4">
             <div className="flex items-center gap-3">
               {icon && (
-                <div className="rounded-xl bg-cyan-400/10 p-2 text-cyan-300 border border-cyan-400/20">
+                <div className="rounded-xl bg-neutral-800 p-2 text-white border border-neutral-700">
                   {icon}
                 </div>
               )}
               <div>
                 {subtitle && (
-                  <div className="text-[10px] uppercase font-bold tracking-widest text-cyan-300">
+                  <div className="text-[10px] uppercase font-bold tracking-widest text-white">
                     {subtitle}
                   </div>
                 )}

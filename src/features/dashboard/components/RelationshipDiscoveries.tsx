@@ -14,7 +14,7 @@ export const RelationshipDiscoveries: React.FC<RelationshipDiscoveriesProps> = (
 }) => {
   return (
     <div className="space-y-2 text-xs">
-      <div className="text-[11px] text-amber-300/80 bg-amber-400/5 p-2 rounded border border-amber-400/15">
+      <div className="text-[11px] text-neutral-400/80 bg-neutral-800 p-2 rounded border border-neutral-700">
         Disclaimer: Shared location observations indicate spatial overlap only and do not independently establish association.
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
@@ -26,7 +26,7 @@ export const RelationshipDiscoveries: React.FC<RelationshipDiscoveriesProps> = (
               <div
                 key={`${loc.id}-${oIdx}`}
                 onClick={() => onSelectEntityPair?.(ov.entityA, ov.entityB)}
-                className="intel-card p-2.5 flex items-center justify-between cursor-pointer hover:border-cyan-400/30 transition"
+                className="intel-card p-2.5 flex items-center justify-between cursor-pointer hover:border-neutral-700 transition"
               >
                 <div>
                   <div className="font-semibold text-white">

@@ -58,8 +58,8 @@ export const EvidenceLineageView: React.FC<EvidenceLineageViewProps> = ({
   return (
     <div className="space-y-4 text-xs">
       {/* Question Header matching PDF Section 18: WHY WAS THIS RELATIONSHIP FOUND? */}
-      <div className="border border-neutral-800 bg-[#0a0a0a] rounded p-4 space-y-2.5">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase text-[#00629B] font-bold">
+      <div className="border border-neutral-800 bg-[#09090B] rounded p-4 space-y-2.5">
+        <div className="flex items-center gap-2 text-xs font-mono uppercase text-white font-bold">
           <HelpCircle size={15} />
           <span>ALGORITHMIC PROVENANCE & EVIDENCE LINEAGE</span>
         </div>
@@ -71,7 +71,7 @@ export const EvidenceLineageView: React.FC<EvidenceLineageViewProps> = ({
             <span className="font-bold text-white">{entity.name}</span>
             <span className="text-neutral-500">({entity.id})</span>
           </div>
-          <span className="text-[#00629B] font-bold">⟷</span>
+          <span className="text-white font-bold">⟷</span>
           <div className="flex items-center gap-2">
             <span className="font-bold text-white">{peer?.name || peerId}</span>
             <span className="text-neutral-500">({peerId})</span>
@@ -83,17 +83,17 @@ export const EvidenceLineageView: React.FC<EvidenceLineageViewProps> = ({
       </div>
 
       {/* Corroborating Evidence Modalities (PDF Section 18) */}
-      <div className="border border-neutral-800 bg-[#0a0a0a] rounded p-4 space-y-3">
+      <div className="border border-neutral-800 bg-[#09090B] rounded p-4 space-y-3">
         <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider font-mono flex items-center justify-between">
           <span>Corroborating Evidence Signals</span>
-          <span className="text-[#00629B] font-bold">{confidencePct}% Total Confidence</span>
+          <span className="text-white font-bold">{confidencePct}% Total Confidence</span>
         </div>
 
         {/* 1. CDR Signal */}
         <div className="intel-card p-3 space-y-1.5 border-neutral-800">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <PhoneCall size={14} className="text-[#00629B]" />
+              <PhoneCall size={14} className="text-white" />
               <span className="font-bold text-white">Telephony (CDR)</span>
             </div>
             <span className="badge-accent font-mono text-[9px]">{callCount} CALLS LOGGED</span>
@@ -107,7 +107,7 @@ export const EvidenceLineageView: React.FC<EvidenceLineageViewProps> = ({
         <div className="intel-card p-3 space-y-1.5 border-neutral-800">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <MapPin size={14} className="text-emerald-400" />
+              <MapPin size={14} className="text-neutral-400" />
               <span className="font-bold text-white">Location Overlap</span>
             </div>
             <span className="badge-accent font-mono text-[9px]">{sharedLocationsCount} SHARED SITES</span>
@@ -121,7 +121,7 @@ export const EvidenceLineageView: React.FC<EvidenceLineageViewProps> = ({
         <div className="intel-card p-3 space-y-1.5 border-neutral-800">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Truck size={14} className="text-amber-400" />
+              <Truck size={14} className="text-neutral-400" />
               <span className="font-bold text-white">Common Vehicle Transit</span>
             </div>
             <span className="badge-accent font-mono text-[9px]">VEHICLE_21</span>

@@ -24,14 +24,14 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
   const linkedRels = relationships.filter(r => evidence.linkedRelationships.includes(r.id))
 
   return (
-    <div className="fixed inset-y-0 right-0 z-50 w-full max-w-lg border-l border-neutral-800 bg-[#0a0a0a] shadow-2xl p-6 flex flex-col overflow-y-auto text-white">
+    <div className="fixed inset-y-0 right-0 z-50 w-full max-w-lg border-l border-neutral-800 bg-[#09090B] shadow-2xl p-6 flex flex-col overflow-y-auto text-white">
       <div className="flex items-center justify-between border-b border-neutral-800 pb-4">
         <div className="flex items-center gap-3">
-          <div className="rounded bg-[#00629B]/20 p-2 text-[#00629B] border border-[#00629B]/40">
+          <div className="rounded bg-white/5 p-2 text-white border border-white/40">
             <Database size={20} />
           </div>
           <div>
-            <div className="text-[10px] uppercase font-bold tracking-widest text-[#00629B] font-mono">
+            <div className="text-[10px] uppercase font-bold tracking-widest text-white font-mono">
               EVIDENCE RECORD & PROVENANCE
             </div>
             <h3 className="text-lg font-bold text-white font-mono">{evidence.id}</h3>
@@ -51,13 +51,13 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
         <div className="grid grid-cols-2 gap-3">
           <div className="intel-card">
             <div className="text-[10px] text-neutral-500 uppercase tracking-wider font-mono">Evidence Type</div>
-            <div className="text-xs font-bold text-[#00629B] mt-1 font-mono">{evidence.type}</div>
+            <div className="text-xs font-bold text-white mt-1 font-mono">{evidence.type}</div>
           </div>
           <div className="intel-card">
             <div className="text-[10px] text-neutral-500 uppercase tracking-wider font-mono">
               Verification Reliability
             </div>
-            <div className="text-xs font-bold text-emerald-400 mt-1 font-mono">
+            <div className="text-xs font-bold text-neutral-400 mt-1 font-mono">
               {Math.round((evidence.reliability || 0.85) * 100)}% Verified
             </div>
           </div>
@@ -67,7 +67,7 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
           <div className="intel-card">
             <div className="text-[10px] text-neutral-500 uppercase tracking-wider font-mono">Observation Date</div>
             <div className="text-xs font-semibold text-neutral-300 mt-1 flex items-center gap-1.5 font-mono">
-              <Calendar size={13} className="text-[#00629B]" /> {fmtDate(evidence.dateCollected || evidence.date)}
+              <Calendar size={13} className="text-white" /> {fmtDate(evidence.dateCollected || evidence.date)}
             </div>
           </div>
           <div className="intel-card">
@@ -88,11 +88,11 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
         {/* Evidence Lineage Chain */}
         <div>
           <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-1.5 font-mono">
-            <FolderGit2 size={13} className="text-[#00629B]" /> Provenance Lineage
+            <FolderGit2 size={13} className="text-white" /> Provenance Lineage
           </span>
           <div className="mt-2 rounded border border-neutral-800 bg-black p-4 text-xs space-y-3 font-mono">
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-[#00629B]" />
+              <span className="h-2 w-2 rounded-full bg-white/5" />
               <span className="text-neutral-400">{evidence.id}</span>
               <span className="text-neutral-600">→</span>
               <span className="text-neutral-200">{evidence.source}</span>
@@ -104,10 +104,10 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
               <span className="text-neutral-200">{evidence.linkedEntities.join(', ')}</span>
             </div>
             <div className="flex items-center gap-2 pl-8 border-l border-neutral-800">
-              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+              <span className="h-2 w-2 rounded-full bg-neutral-800" />
               <span className="text-neutral-400">Substantiated Link</span>
               <span className="text-neutral-600">→</span>
-              <span className="text-emerald-400">
+              <span className="text-neutral-400">
                 {evidence.linkedRelationships.join(', ')}
               </span>
             </div>
@@ -122,7 +122,7 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
               <button
                 key={ent.id}
                 onClick={() => onSelectEntity(ent.id)}
-                className="filter-chip hover:border-[#00629B] text-[11px]"
+                className="filter-chip hover:border-white text-[11px]"
               >
                 <span
                   className="h-2 w-2 rounded-full"
@@ -144,14 +144,14 @@ export const EvidenceDrawer: React.FC<EvidenceDrawerProps> = ({
               <button
                 key={rel.id}
                 onClick={() => onSelectRel(rel)}
-                className="w-full text-left p-2.5 rounded border border-neutral-800 bg-neutral-950 hover:border-[#00629B] flex items-center justify-between text-xs transition"
+                className="w-full text-left p-2.5 rounded border border-neutral-800 bg-neutral-950 hover:border-white flex items-center justify-between text-xs transition"
               >
                 <div className="flex items-center gap-2 truncate">
-                  <Link2 size={13} className="text-[#00629B] shrink-0" />
+                  <Link2 size={13} className="text-white shrink-0" />
                   <span className="text-neutral-200 font-medium font-mono">{rel.id}</span>
                   <span className="text-neutral-500">({rel.type})</span>
                 </div>
-                <span className="text-[#00629B] font-bold font-mono">{Math.round(rel.confidence * 100)}%</span>
+                <span className="text-white font-bold font-mono">{Math.round(rel.confidence * 100)}%</span>
               </button>
             ))}
           </div>
