@@ -34,16 +34,11 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
           <div>
             <span className="text-sm font-black tracking-widest uppercase">LinkTracer</span>
             <span className="text-neutral-500 text-xs ml-2 font-mono">v1.0.4</span>
-            <div className="text-[10px] text-neutral-400 font-mono tracking-wider">
-              INTELLIGENCE & INVESTIGATION PLATFORM
-            </div>
+
           </div>
         </div>
 
-        <div className="hidden sm:flex items-center gap-2 text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
-          <span className="h-1.5 w-1.5 rounded-full bg-neutral-800 animate-pulse" />
-          SECURE TERMINAL • NODE 01
-        </div>
+
       </header>
 
       {/* Center Auth Container */}
@@ -54,11 +49,9 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
               <Lock size={20} className="text-white" />
             </div>
             <h1 className="text-lg font-bold text-white tracking-wide uppercase">
-              Operator Authentication
+             Investigator Login
             </h1>
-            <p className="text-xs text-neutral-400 mt-1">
-              Restricted Law Enforcement Intelligence Console
-            </p>
+
           </div>
 
           <form onSubmit={handleAuth} className="space-y-4">
@@ -141,7 +134,6 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
       {/* Footer */}
       <footer className="border-t border-neutral-800 pt-4 flex flex-wrap items-center justify-between text-[10px] text-neutral-500 font-mono">
         <div>SIH26189 CRIMINAL NETWORK INTELLIGENCE PLATFORM • PROTOTYPE DEMONSTRATION</div>
-        <div>ALL DATA SYNTHETIC • NO REAL PERSONS OR RECORDS INVOLVED</div>
       </footer>
     </main>
   )
