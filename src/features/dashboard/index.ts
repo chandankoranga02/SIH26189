@@ -1,4 +1,5 @@
 export * from './components/DashboardPage'
+export * from './components/MovingDotsBackground'
 export * from './components/InvestigationPulse'
 export * from './components/DetectedPatterns'
 export * from './components/InvestigationLeads'
@@ -6,3 +7,4 @@ export * from './components/RelationshipDiscoveries'
 export * from './components/NetworkIntelligence'
 export * from './components/TemporalActivity'
 export * from './hooks/useDashboardStats'
+

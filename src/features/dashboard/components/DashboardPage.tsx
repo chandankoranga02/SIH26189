@@ -291,7 +291,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onLogout }) => {
       />
 
       {/* 2. MAIN APPLICATION VIEWS */}
-      <div className="flex-1 flex overflow-hidden relative">
+      <div className={`flex-1 flex relative ${activeView === 'workspace' ? 'overflow-hidden' : 'overflow-y-auto overflow-x-hidden'}`}>
         {/* VIEW A: INVESTIGATOR COMMAND HUB */}
         {activeView === 'hub' && (
           <InvestigatorHub
