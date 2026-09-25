@@ -57,33 +57,33 @@ export const InspectorDossier: React.FC<InspectorDossierProps> = ({
 
   return (
     <div className="flex flex-col h-full bg-black text-white">
-      {/* Dossier Top Navigation Tabs (Matching Wireframe Page 2 Left Panel) */}
-      <div className="border-b border-neutral-800 bg-[#09090B] p-2">
-        <div className="flex items-center justify-between px-2 mb-2">
+      {/* Dossier Top Navigation Tabs — Curvy & Themed */}
+      <div className="border-b border-neutral-800/80 bg-[#0c0c10] p-3">
+        <div className="flex items-center justify-between mb-2.5">
           <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-white/5" />
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-neutral-400">
-              INVESTIGATION DOSSIER
+            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse shadow-sm shadow-indigo-500/50" />
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-neutral-200">
+              Investigation Dossier
             </span>
           </div>
 
           <button
             onClick={() => onGenerateReport(entity)}
-            className="btn-ghost text-[10px] py-1 px-2.5 flex items-center gap-1.5 hover:text-white"
+            className="btn-ghost rounded-xl text-[10px] py-1 px-3 flex items-center gap-1.5 hover:border-neutral-700 transition"
             title="Generate Dossier Report"
           >
-            <Printer size={11} className="text-white" />
+            <Printer size={11} className="text-indigo-400" />
             <span>Generate Report</span>
           </button>
         </div>
 
-        {/* 5 Selectable Mode Tabs */}
-        <div className="grid grid-cols-5 gap-1 text-[11px] font-semibold">
+        {/* 5 Selectable Mode Tabs — Curvy Pills */}
+        <div className="grid grid-cols-5 gap-1.5 text-[11px] font-semibold bg-neutral-950/80 p-1 rounded-2xl border border-neutral-800/80">
           <button
             onClick={() => setActiveTab('profile')}
-            className={`py-1.5 px-1 rounded text-center truncate transition ${
+            className={`py-1.5 px-1.5 rounded-xl text-center truncate transition-all ${
               activeTab === 'profile'
-                ? 'bg-white/5 text-white'
+                ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-950/50'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
             }`}
             title="Criminal Profile"
@@ -92,9 +92,9 @@ export const InspectorDossier: React.FC<InspectorDossierProps> = ({
           </button>
           <button
             onClick={() => setActiveTab('relations')}
-            className={`py-1.5 px-1 rounded text-center truncate transition ${
+            className={`py-1.5 px-1.5 rounded-xl text-center truncate transition-all ${
               activeTab === 'relations'
-                ? 'bg-white/5 text-white'
+                ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-950/50'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
             }`}
             title="Relation with different Criminals"
@@ -103,9 +103,9 @@ export const InspectorDossier: React.FC<InspectorDossierProps> = ({
           </button>
           <button
             onClick={() => setActiveTab('calls')}
-            className={`py-1.5 px-1 rounded text-center truncate transition ${
+            className={`py-1.5 px-1.5 rounded-xl text-center truncate transition-all ${
               activeTab === 'calls'
-                ? 'bg-white/5 text-white'
+                ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-950/50'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
             }`}
             title="Detailed Call records with audio play"
@@ -114,9 +114,9 @@ export const InspectorDossier: React.FC<InspectorDossierProps> = ({
           </button>
           <button
             onClick={() => setActiveTab('firs')}
-            className={`py-1.5 px-1 rounded text-center truncate transition ${
+            className={`py-1.5 px-1.5 rounded-xl text-center truncate transition-all ${
               activeTab === 'firs'
-                ? 'bg-white/5 text-white'
+                ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-950/50'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
             }`}
             title="FIRs Records"
@@ -125,9 +125,9 @@ export const InspectorDossier: React.FC<InspectorDossierProps> = ({
           </button>
           <button
             onClick={() => setActiveTab('lineage')}
-            className={`py-1.5 px-1 rounded text-center truncate transition ${
+            className={`py-1.5 px-1.5 rounded-xl text-center truncate transition-all ${
               activeTab === 'lineage'
-                ? 'bg-white/5 text-white'
+                ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-950/50'
                 : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
             }`}
             title="Evidence Lineage: Why was this relationship found?"

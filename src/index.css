@@ -41,80 +41,80 @@
 }
 
 @layer components {
-  /* Panels and cards */
+  /* Panels and cards — Curvy & Sleek */
   .intel-panel {
-    @apply rounded border border-[#27272A] bg-[#09090B];
+    @apply rounded-2xl border border-neutral-800/80 bg-[#09090b]/90 shadow-xl backdrop-blur-md;
   }
 
   .intel-card {
-    @apply rounded border border-[#27272A] bg-[#09090B] p-3 transition duration-150 hover:border-neutral-500;
+    @apply rounded-xl border border-neutral-800/80 bg-[#0e0e12]/80 p-3.5 transition-all duration-200 hover:border-neutral-700 hover:shadow-lg hover:shadow-black/50;
   }
 
   .intel-card-selected {
-    @apply rounded border border-white bg-white/5 p-3;
+    @apply rounded-xl border border-indigo-500/60 bg-indigo-950/25 p-3.5 shadow-lg shadow-indigo-950/30;
   }
 
   .intel-header {
-    @apply flex items-center justify-between border-b border-[#27272A] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-neutral-300 bg-[#09090B];
+    @apply flex items-center justify-between border-b border-neutral-800/80 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-neutral-300 bg-[#09090b]/90;
   }
 
   /* Inputs and controls */
   .intel-input {
-    @apply w-full rounded border border-[#27272A] bg-[#09090B] px-3 py-1.5 text-xs text-white placeholder-neutral-500 outline-none transition focus:border-white focus:ring-1 focus:ring-white/40;
+    @apply w-full rounded-xl border border-neutral-800 bg-[#09090b] px-3.5 py-2 text-xs text-white placeholder-neutral-500 outline-none transition focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/40;
   }
 
   .intel-select {
-    @apply rounded border border-[#27272A] bg-[#09090B] px-2.5 py-1.5 text-xs text-neutral-200 outline-none transition focus:border-white focus:ring-1 focus:ring-white/40;
+    @apply rounded-xl border border-neutral-800 bg-[#09090b] px-3 py-1.5 text-xs text-neutral-200 outline-none transition focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/40;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded bg-white px-3.5 py-1.5 text-xs font-semibold text-black transition hover:bg-neutral-200 active:scale-[0.98] border border-white;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 px-4 py-2 text-xs font-semibold text-white transition-all hover:from-indigo-500 hover:to-cyan-500 active:scale-[0.98] shadow-md shadow-indigo-950/40;
   }
 
   .btn-primary:hover {
-    box-shadow: 0 0 14px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 16px rgba(99, 102, 241, 0.4);
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-1.5 rounded border border-[#27272A] bg-transparent px-3 py-1.5 text-xs font-medium text-neutral-300 transition hover:border-neutral-500 hover:bg-neutral-900 hover:text-white;
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl border border-neutral-800 bg-neutral-900/60 px-3.5 py-1.5 text-xs font-medium text-neutral-300 transition-all hover:border-neutral-700 hover:bg-neutral-800 hover:text-white;
   }
 
   .btn-ghost-active {
-    @apply border-white bg-white/10 text-white font-semibold;
+    @apply border-indigo-500/60 bg-indigo-950/30 text-indigo-200 font-semibold;
   }
 
   .btn-icon {
-    @apply inline-flex h-7 w-7 items-center justify-center rounded border border-[#27272A] bg-transparent text-neutral-400 transition hover:border-neutral-500 hover:bg-neutral-900 hover:text-white;
+    @apply inline-flex h-7 w-7 items-center justify-center rounded-xl border border-neutral-800 bg-neutral-900/40 text-neutral-400 transition hover:border-neutral-700 hover:bg-neutral-800 hover:text-white;
   }
 
   /* Filter toggles */
   .filter-chip {
-    @apply inline-flex cursor-pointer items-center gap-1.5 rounded border border-[#27272A] bg-transparent px-2.5 py-1 text-xs text-neutral-400 transition hover:border-neutral-500 hover:text-neutral-200;
+    @apply inline-flex cursor-pointer items-center gap-1.5 rounded-xl border border-neutral-800 bg-neutral-900/40 px-3 py-1 text-xs text-neutral-400 transition hover:border-neutral-700 hover:text-neutral-200;
   }
 
   .filter-chip.active {
-    @apply border-white bg-white/10 text-white font-medium;
+    @apply border-indigo-500/60 bg-indigo-950/30 text-indigo-200 font-medium;
   }
 
-  /* Status and Priority badges */
+  /* Status and Priority badges — curvy & consistent */
   .badge-high {
-    @apply inline-flex items-center rounded border border-neutral-600 bg-neutral-900 px-2 py-0.5 text-[10px] font-bold text-white;
+    @apply inline-flex items-center rounded-full border border-rose-500/30 bg-rose-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-rose-300;
   }
 
   .badge-med {
-    @apply inline-flex items-center rounded border border-neutral-700 bg-neutral-900 px-2 py-0.5 text-[10px] font-bold text-neutral-300;
+    @apply inline-flex items-center rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-amber-300;
   }
 
   .badge-low {
-    @apply inline-flex items-center rounded border border-neutral-800 bg-neutral-900 px-2 py-0.5 text-[10px] font-bold text-neutral-400;
+    @apply inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-300;
   }
 
   .badge-neutral {
-    @apply inline-flex items-center rounded border border-[#27272A] bg-transparent px-2 py-0.5 text-[10px] font-medium text-neutral-400;
+    @apply inline-flex items-center rounded-full border border-neutral-700/60 bg-neutral-800/60 px-2.5 py-0.5 text-[10px] font-medium text-neutral-300;
   }
 
   .badge-accent {
-    @apply inline-flex items-center rounded border border-white/50 bg-white/10 px-2 py-0.5 text-[10px] font-bold text-white;
+    @apply inline-flex items-center rounded-full border border-indigo-500/30 bg-indigo-500/15 px-2.5 py-0.5 text-[10px] font-semibold text-indigo-300;
   }
 
   /* Tab strip */

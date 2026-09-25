@@ -28,76 +28,76 @@ export interface EntityTypeStyle {
   shape: 'circle' | 'rounded-rect' | 'pin' | 'square' | 'diamond' | 'hexagon' | 'rect'
 }
 
-// Entity Visual Types — Monochrome Palette (black fill, white outlines)
+// Entity Visual Types — Vibrant Colored Palette for premium 3D graph
 export const ENTITY_CONFIG: Record<string, EntityTypeStyle> = {
   PERSON: {
     label: 'Person',
-    color: '#ffffff',
-    bg: 'rgba(10, 10, 10, 0.92)',
-    border: '#ffffff',
+    color: '#818cf8',
+    bg: 'rgba(99, 102, 241, 0.15)',
+    border: '#818cf8',
     icon: Users,
     baseRadius: 24,
     shape: 'circle'
   },
   PHONE: {
     label: 'Phone',
-    color: '#d4d4d8',
-    bg: 'rgba(10, 10, 10, 0.92)',
-    border: '#d4d4d8',
+    color: '#38bdf8',
+    bg: 'rgba(56, 189, 248, 0.12)',
+    border: '#38bdf8',
     icon: Phone,
     baseRadius: 18,
     shape: 'rounded-rect'
   },
   LOCATION: {
     label: 'Location',
-    color: '#e4e4e7',
-    bg: 'rgba(10, 10, 10, 0.92)',
-    border: '#e4e4e7',
+    color: '#34d399',
+    bg: 'rgba(52, 211, 153, 0.12)',
+    border: '#34d399',
     icon: MapPin,
     baseRadius: 22,
     shape: 'pin'
   },
   CASE: {
     label: 'FIR / Case',
-    color: '#fafafa',
-    bg: 'rgba(10, 10, 10, 0.92)',
-    border: '#fafafa',
+    color: '#f472b6',
+    bg: 'rgba(244, 114, 182, 0.12)',
+    border: '#f472b6',
     icon: FileText,
     baseRadius: 22,
     shape: 'square'
   },
   EVENT: {
     label: 'Event',
-    color: '#d4d4d8',
-    bg: 'rgba(10, 10, 10, 0.92)',
-    border: '#d4d4d8',
+    color: '#fbbf24',
+    bg: 'rgba(251, 191, 36, 0.12)',
+    border: '#fbbf24',
     icon: Clock,
     baseRadius: 20,
     shape: 'diamond'
   },
   VEHICLE: {
     label: 'Vehicle',
-    color: '#e4e4e7',
-    bg: 'rgba(10, 10, 10, 0.92)',
-    border: '#e4e4e7',
+    color: '#fb923c',
+    bg: 'rgba(251, 146, 60, 0.12)',
+    border: '#fb923c',
     icon: Truck,
     baseRadius: 20,
     shape: 'hexagon'
   },
   ORGANIZATION: {
     label: 'Organization',
-    color: '#fafafa',
-    bg: 'rgba(10, 10, 10, 0.92)',
-    border: '#fafafa',
+    color: '#c084fc',
+    bg: 'rgba(192, 132, 252, 0.12)',
+    border: '#c084fc',
     icon: Building2,
     baseRadius: 26,
     shape: 'rect'
   },
   DOCUMENT: {
     label: 'Document / Intel',
-    color: '#d4d4d8',
-    bg: 'rgba(10, 10, 10, 0.92)',
-    border: '#d4d4d8',
+    color: '#67e8f9',
+    bg: 'rgba(103, 232, 249, 0.12)',
+    border: '#67e8f9',
     icon: FileText,
     baseRadius: 21,
     shape: 'square'
@@ -110,13 +110,14 @@ export interface RelCategoryStyle {
   width: number
 }
 
-// Relationship categories — Monochrome line styling
+// Relationship categories — Colored line styling
 export const REL_CATEGORY_CONFIG: Record<string, RelCategoryStyle> = {
-  COMMUNICATION: { color: '#ffffff', dash: null, width: 1.8 },
-  ASSOCIATION: { color: '#a1a1aa', dash: null, width: 1.4 },
-  LOCATION: { color: '#a1a1aa', dash: '4,4', width: 1.4 },
-  CASE: { color: '#ffffff', dash: null, width: 2.2 },
-  EVENT: { color: '#a1a1aa', dash: '2,3', width: 1.4 },
-  MEMBERSHIP: { color: '#a1a1aa', dash: '6,3', width: 1.4 },
-  VEHICLE: { color: '#a1a1aa', dash: '5,3', width: 1.4 }
+  COMMUNICATION: { color: '#818cf8', dash: null, width: 1.8 },
+  ASSOCIATION: { color: '#a78bfa', dash: null, width: 1.4 },
+  LOCATION: { color: '#34d399', dash: '4,4', width: 1.4 },
+  CASE: { color: '#f472b6', dash: null, width: 2.2 },
+  EVENT: { color: '#fbbf24', dash: '2,3', width: 1.4 },
+  MEMBERSHIP: { color: '#c084fc', dash: '6,3', width: 1.4 },
+  VEHICLE: { color: '#fb923c', dash: '5,3', width: 1.4 }
 }
+

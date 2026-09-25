@@ -248,7 +248,7 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
         target: typeof r.target === 'object' ? r.target.id : r.target
       }))
 
-    // Arrow markers for links — monochrome
+    // Arrow markers for links
     const defs = svg.append('defs')
     defs.append('marker')
       .attr('id', 'arrow-mono')
@@ -260,8 +260,8 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
       .attr('orient', 'auto')
       .append('path')
       .attr('d', 'M0,-5L10,0L0,5')
-      .attr('fill', '#ffffff')
-      .attr('opacity', 0.5)
+      .attr('fill', '#818cf8')
+      .attr('opacity', 0.6)
 
     defs.append('marker')
       .attr('id', 'arrow-indirect')
@@ -276,6 +276,73 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
       .attr('fill', '#555555')
       .attr('opacity', 0.4)
 
+    // 3D Spherical Radial Gradients for ultra-premium look
+    const GRADIENT_DEFINITIONS: Record<string, [string, string, string]> = {
+      PERSON: ['#e0e7ff', '#6366f1', '#1e1b4b'],       // Indigo / Violet 3D sphere
+      PHONE: ['#e0f2fe', '#0ea5e9', '#082f49'],        // Cyan / Sky
+      LOCATION: ['#d1fae5', '#10b981', '#064e3b'],     // Emerald
+      CASE: ['#fce7f3', '#ec4899', '#701a75'],         // Pink / Fuchsia
+      EVENT: ['#fef3c7', '#f59e0b', '#78350f'],        // Amber / Gold
+      VEHICLE: ['#ffedd5', '#f97316', '#7c2d12'],      // Orange / Coral
+      ORGANIZATION: ['#f3e8ff', '#a855f7', '#581c87'], // Purple
+      DOCUMENT: ['#cffafe', '#06b6d4', '#164e63']      // Cyan
+    }
+
+    Object.entries(GRADIENT_DEFINITIONS).forEach(([type, [highlight, mid, deep]]) => {
+      const grad = defs.append('radialGradient')
+        .attr('id', `sphere-grad-${type}`)
+        .attr('cx', '35%')
+        .attr('cy', '35%')
+        .attr('r', '65%')
+
+      grad.append('stop')
+        .attr('offset', '0%')
+        .attr('stop-color', highlight)
+        .attr('stop-opacity', '0.95')
+
+      grad.append('stop')
+        .attr('offset', '45%')
+        .attr('stop-color', mid)
+        .attr('stop-opacity', '0.85')
+
+      grad.append('stop')
+        .attr('offset', '100%')
+        .attr('stop-color', deep)
+        .attr('stop-opacity', '0.95')
+    })
+
+    const muteGrad = defs.append('radialGradient')
+      .attr('id', 'sphere-grad-muted')
+      .attr('cx', '35%')
+      .attr('cy', '35%')
+      .attr('r', '65%')
+    muteGrad.append('stop').attr('offset', '0%').attr('stop-color', '#71717a').attr('stop-opacity', '0.7')
+    muteGrad.append('stop').attr('offset', '100%').attr('stop-color', '#18181b').attr('stop-opacity', '0.9')
+
+    // Glow filter for 3D neon node effect
+    const glowFilter = defs.append('filter')
+      .attr('id', 'node-glow')
+      .attr('x', '-50%').attr('y', '-50%')
+      .attr('width', '200%').attr('height', '200%')
+    glowFilter.append('feGaussianBlur')
+      .attr('stdDeviation', '4')
+      .attr('result', 'coloredBlur')
+    const feMerge = glowFilter.append('feMerge')
+    feMerge.append('feMergeNode').attr('in', 'coloredBlur')
+    feMerge.append('feMergeNode').attr('in', 'SourceGraphic')
+
+    // Stronger glow for selected nodes
+    const glowFilterStrong = defs.append('filter')
+      .attr('id', 'node-glow-strong')
+      .attr('x', '-60%').attr('y', '-60%')
+      .attr('width', '220%').attr('height', '220%')
+    glowFilterStrong.append('feGaussianBlur')
+      .attr('stdDeviation', '8')
+      .attr('result', 'coloredBlur')
+    const feMergeS = glowFilterStrong.append('feMerge')
+    feMergeS.append('feMergeNode').attr('in', 'coloredBlur')
+    feMergeS.append('feMergeNode').attr('in', 'SourceGraphic')
+
     // ============================================================
     // RADIAL LAYOUT for selected-entity mode
     // Center the selected entity; arrange 1-hop neighbors in a ring.
@@ -288,6 +355,26 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
       const cy = height / 2
       const firstHopRadius = Math.min(width, height) * 0.25
       const secondHopRadius = Math.min(width, height) * 0.42
+
+      // Draw futuristic orbital guide rings for 3D depth
+      const orbitGroup = g.append('g').attr('class', 'orbit-rings')
+      orbitGroup.append('circle')
+        .attr('cx', cx).attr('cy', cy).attr('r', firstHopRadius)
+        .attr('fill', 'none')
+        .attr('stroke', '#6366f1')
+        .attr('stroke-width', 1.2)
+        .attr('stroke-dasharray', '4,8')
+        .attr('opacity', 0.22)
+
+      if (expandHop) {
+        orbitGroup.append('circle')
+          .attr('cx', cx).attr('cy', cy).attr('r', secondHopRadius)
+          .attr('fill', 'none')
+          .attr('stroke', '#38bdf8')
+          .attr('stroke-width', 1.2)
+          .attr('stroke-dasharray', '6,10')
+          .attr('opacity', 0.16)
+      }
 
       nodes.forEach(n => {
         if (n.id === selectedEntityId) {
@@ -480,7 +567,7 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
     node.call(drag)
 
     // ============================================================
-    // RENDER NODE SHAPES — Monochrome (black fill, white outline)
+    // RENDER NODE SHAPES — Vibrant colored with 3D glow
     // ============================================================
     node.each(function(d) {
       const elNode = d3.select(this)
@@ -489,24 +576,33 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
       const isTwoHopNode = twoHopNeighbors.includes(d.id)
       const r = (isSelected || isSpotlight) ? d.radius + 5 : d.radius
 
-      // Selected pulsating halo ring — white
+      // Apply glow filter to node group for 3D depth
+      if (isSelected || isSpotlight) {
+        elNode.attr('filter', 'url(#node-glow-strong)')
+      } else if (!isTwoHopNode) {
+        elNode.attr('filter', 'url(#node-glow)')
+      }
+
+      // Selected pulsating halo ring — entity colored
       if (isSelected || isSpotlight) {
         elNode.append('circle')
           .attr('r', r + 11)
           .attr('fill', 'none')
-          .attr('stroke', '#ffffff')
+          .attr('stroke', d.config.color)
           .attr('stroke-width', 2)
+          .attr('stroke-opacity', 0.6)
           .attr('class', 'pulse-halo')
       }
 
-      // Node stroke color: white for direct, gray for 2nd-hop
-      const strokeColor = isTwoHopNode ? '#555555' : '#ffffff'
-      const strokeWidth = (isSelected || isSpotlight) ? 3 : isTwoHopNode ? 1.5 : 2
+      // Node stroke color: entity color for direct, gray for 2nd-hop
+      const strokeColor = isTwoHopNode ? '#52525b' : d.config.color
+      const strokeWidth = (isSelected || isSpotlight) ? 2.8 : isTwoHopNode ? 1.5 : 2
+      const nodeFill = isTwoHopNode ? 'url(#sphere-grad-muted)' : `url(#sphere-grad-${d.type})`
 
       if (d.config.shape === 'circle' || d.config.shape === 'pin') {
         elNode.append('circle')
           .attr('r', r)
-          .attr('fill', d.config.bg)
+          .attr('fill', nodeFill)
           .attr('stroke', strokeColor)
           .attr('stroke-width', strokeWidth)
       } else if (d.config.shape === 'square') {
@@ -515,8 +611,8 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
           .attr('y', -r)
           .attr('width', r * 2)
           .attr('height', r * 2)
-          .attr('rx', 4)
-          .attr('fill', d.config.bg)
+          .attr('rx', 8)
+          .attr('fill', nodeFill)
           .attr('stroke', strokeColor)
           .attr('stroke-width', strokeWidth)
       } else if (d.config.shape === 'diamond') {
@@ -525,9 +621,9 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
           .attr('y', -r)
           .attr('width', r * 1.8)
           .attr('height', r * 1.8)
-          .attr('rx', 3)
+          .attr('rx', 6)
           .attr('transform', 'rotate(45)')
-          .attr('fill', d.config.bg)
+          .attr('fill', nodeFill)
           .attr('stroke', strokeColor)
           .attr('stroke-width', strokeWidth)
       } else if (d.config.shape === 'hexagon') {
@@ -538,7 +634,7 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
         }
         elNode.append('polygon')
           .attr('points', pts.join(' '))
-          .attr('fill', d.config.bg)
+          .attr('fill', nodeFill)
           .attr('stroke', strokeColor)
           .attr('stroke-width', strokeWidth)
       } else {
@@ -548,13 +644,13 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
           .attr('y', -r * 0.9)
           .attr('width', r * 2.8)
           .attr('height', r * 1.8)
-          .attr('rx', 8)
-          .attr('fill', d.config.bg)
+          .attr('rx', 10)
+          .attr('fill', nodeFill)
           .attr('stroke', strokeColor)
           .attr('stroke-width', strokeWidth)
       }
 
-      // Glyph / Code inside node — crisp white text
+      // Glyph / Code inside node — high contrast text with 3D shadow
       const displayInitials = d.type === 'PERSON'
         ? d.name.split(' ').map(x => x[0]).join('')
         : d.id
@@ -563,7 +659,8 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
         .attr('dy', '.35em')
         .attr('font-size', d.radius > 22 ? 11 : 9)
         .attr('font-weight', 800)
-        .attr('fill', isTwoHopNode ? '#888888' : '#ffffff')
+        .attr('fill', '#ffffff')
+        .style('text-shadow', '0 1px 3px rgba(0,0,0,0.9)')
         .text(displayInitials)
 
       // External label underneath — white
@@ -729,22 +826,25 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
       {/* Top Graph Overlay Bar */}
       <div className="absolute top-3 left-3 right-3 z-10 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
         <div className="flex items-center gap-2 pointer-events-auto">
-          <div className="rounded-lg border border-neutral-700 bg-black/90 px-3 py-1.5 backdrop-blur text-xs flex items-center gap-2 text-neutral-300 shadow-md">
-            <Network size={14} className="text-white" />
+          <div className="rounded-xl border border-neutral-800/80 bg-neutral-950/85 px-3.5 py-1.5 backdrop-blur-md text-xs flex items-center gap-2 text-neutral-300 shadow-xl">
+            <Network size={14} className="text-indigo-400" />
             <span className="font-semibold text-white">{filteredEntities.length}</span> Entities
             <span className="text-neutral-600">•</span>
             <span className="font-semibold text-white">{filteredRels.length}</span> Links
             {selectedEntityId && (
               <>
                 <span className="text-neutral-600">•</span>
-                <span className="text-neutral-400">1-Hop View</span>
+                <span className="text-indigo-300 font-medium">1-Hop Focus</span>
               </>
             )}
           </div>
 
           {selectedEntityId && (
-            <button onClick={handleCenterSelected} className="btn-ghost pointer-events-auto text-[11px] py-1 bg-black/90 border-neutral-700 text-neutral-200 hover:bg-neutral-800">
-              <Target size={13} className="text-white" /> Focus
+            <button
+              onClick={handleCenterSelected}
+              className="btn-ghost rounded-xl pointer-events-auto text-[11px] py-1 px-3 bg-neutral-950/85 border-neutral-800 text-neutral-200 hover:border-indigo-500/50 hover:bg-neutral-900 transition-all shadow-lg"
+            >
+              <Target size={13} className="text-indigo-400" /> Focus Center
             </button>
           )}
 
@@ -752,20 +852,24 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
           {selectedEntityId && (
             <button
               onClick={() => setExpandHop(p => !p)}
-              className={`pointer-events-auto expand-hop-btn ${expandHop ? 'expand-hop-btn-active' : ''}`}
+              className={`pointer-events-auto rounded-xl px-3 py-1 text-[11px] font-medium border transition-all flex items-center gap-1.5 shadow-lg ${
+                expandHop
+                  ? 'border-indigo-500/60 bg-indigo-950/60 text-indigo-200 shadow-indigo-950/40'
+                  : 'border-neutral-800 bg-neutral-950/85 text-neutral-300 hover:border-neutral-700 hover:bg-neutral-900'
+              }`}
             >
-              <Layers size={13} />
-              {expandHop ? 'Indirect On' : 'Show Indirect Connections'}
+              <Layers size={13} className={expandHop ? 'text-indigo-400' : 'text-neutral-400'} />
+              {expandHop ? 'Indirect Links Active' : 'Show Indirect (2-Hop)'}
             </button>
           )}
 
           {spotlightEntityId && (
-            <div className="rounded-lg border border-neutral-600 bg-neutral-900/90 px-3 py-1 text-xs flex items-center gap-2 text-neutral-200 animate-fade-in shadow-lg">
-              <Sparkles size={13} className="text-white" />
-              <span>Spotlight: <strong>{spotlightNode?.name}</strong></span>
+            <div className="rounded-xl border border-indigo-500/40 bg-indigo-950/70 px-3 py-1 text-xs flex items-center gap-2 text-indigo-100 animate-fade-in shadow-xl backdrop-blur-md">
+              <Sparkles size={13} className="text-indigo-400" />
+              <span>Spotlight: <strong className="text-white">{spotlightNode?.name}</strong></span>
               <button
                 onClick={() => onToggleSpotlight && onToggleSpotlight(null)}
-                className="ml-1 text-[10px] bg-neutral-700 hover:bg-neutral-600 px-1.5 py-0.5 rounded text-neutral-100"
+                className="ml-1 text-[10px] bg-neutral-800 hover:bg-neutral-700 px-2 py-0.5 rounded-lg text-neutral-200 transition"
               >
                 Exit (Esc)
               </button>
@@ -774,11 +878,11 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
         </div>
 
         {/* Toolbar Controls */}
-        <div className="flex items-center gap-1.5 pointer-events-auto rounded-lg border border-neutral-700 bg-black/90 p-1 backdrop-blur shadow-lg">
-          <button onClick={handleZoomIn} title="Zoom In" className="btn-icon h-7 w-7 text-xs font-bold">+</button>
-          <button onClick={handleZoomOut} title="Zoom Out" className="btn-icon h-7 w-7 text-xs font-bold">-</button>
-          <button onClick={handleFit} title="Fit Network" className="btn-icon h-7 w-7"><Maximize2 size={13} /></button>
-          <button onClick={() => { onSelectEntity(null); onSelectRel(null); if (onToggleSpotlight) onToggleSpotlight(null); setExpandHop(false); handleFit() }} title="Reset Network & Selection" className="btn-icon h-7 w-7"><RefreshCw size={13} /></button>
+        <div className="flex items-center gap-1 pointer-events-auto rounded-xl border border-neutral-800/80 bg-neutral-950/85 p-1 backdrop-blur-md shadow-xl">
+          <button onClick={handleZoomIn} title="Zoom In" className="btn-icon h-7 w-7 rounded-lg text-xs font-bold hover:bg-neutral-800 hover:text-white">+</button>
+          <button onClick={handleZoomOut} title="Zoom Out" className="btn-icon h-7 w-7 rounded-lg text-xs font-bold hover:bg-neutral-800 hover:text-white">-</button>
+          <button onClick={handleFit} title="Fit Network" className="btn-icon h-7 w-7 rounded-lg hover:bg-neutral-800 hover:text-white"><Maximize2 size={13} /></button>
+          <button onClick={() => { onSelectEntity(null); onSelectRel(null); if (onToggleSpotlight) onToggleSpotlight(null); setExpandHop(false); handleFit() }} title="Reset Network & Selection" className="btn-icon h-7 w-7 rounded-lg hover:bg-neutral-800 hover:text-white"><RefreshCw size={13} /></button>
         </div>
       </div>
 
@@ -794,23 +898,32 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
         currentPlayDate={currentPlayDate}
       />
 
-      {/* Compact Monochrome Legend Bar */}
-      <div className="border-t border-neutral-800 bg-[#09090B] px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap items-center gap-3 text-[11px]">
-          <span className="text-neutral-500 font-semibold uppercase tracking-wider">Shapes:</span>
-          {SHAPE_LEGEND.map(item => (
-            <div key={item.type} className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-sm border border-white/60 bg-black" />
-              <span className="text-neutral-400 font-medium">{item.label}</span>
-            </div>
-          ))}
+      {/* Color-Coded Entity Legend Bar */}
+      <div className="border-t border-neutral-800/90 bg-[#09090b]/95 backdrop-blur-md px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-3.5 text-[11px]">
+          <span className="text-neutral-500 font-semibold uppercase tracking-wider text-[10px]">Entities:</span>
+          {SHAPE_LEGEND.map(item => {
+            const conf = ENTITY_CONFIG[item.type]
+            return (
+              <div key={item.type} className="flex items-center gap-1.5">
+                <span
+                  className="h-2.5 w-2.5 rounded-full"
+                  style={{
+                    backgroundColor: conf?.color || '#ffffff',
+                    boxShadow: `0 0 6px ${conf?.color || '#ffffff'}88`
+                  }}
+                />
+                <span className="text-neutral-300 font-medium text-[11px]">{item.label}</span>
+              </div>
+            )
+          })}
         </div>
-        <div className="flex items-center gap-4 text-[11px] text-neutral-500">
+        <div className="flex items-center gap-4 text-[11px] text-neutral-400">
           <span className="flex items-center gap-1.5">
-            <span className="w-5 h-0.5 bg-white inline-block" /> Solid: Direct
+            <span className="w-4 h-0.5 bg-indigo-400 inline-block rounded-full" /> Direct Link
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="w-5 h-0.5 border-t border-dashed border-neutral-500 inline-block" /> Dotted: Indirect
+            <span className="w-4 h-0.5 border-t border-dashed border-neutral-500 inline-block" /> Indirect (2-Hop)
           </span>
         </div>
       </div>
