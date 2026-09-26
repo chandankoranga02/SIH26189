@@ -22,7 +22,6 @@ import {
   getDirectNeighbors,
   getSecondDegreeNeighbors
 } from '@/features/network/services/graphAnalytics'
-import { ActivityHeatmapTimeline } from '@/features/timeline/components/ActivityHeatmapTimeline'
 
 export interface InteractiveD3GraphProps {
   visibleEntities: AnyEntity[]
@@ -43,10 +42,6 @@ export interface InteractiveD3GraphProps {
   onToggleSpotlight?: (id: string) => void
   onGenerateReport?: (entity?: AnyEntity) => void
   dateRange: DateRange
-  onSelectDate: (ds: string) => void
-  onPlayToggle: () => void
-  isPlaying: boolean
-  currentPlayDate: string | null
 }
 
 // Shape legend config for the monochrome legend bar
@@ -79,11 +74,7 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
   spotlightEntityId,
   onToggleSpotlight,
   onGenerateReport,
-  dateRange,
-  onSelectDate,
-  onPlayToggle,
-  isPlaying,
-  currentPlayDate
+  dateRange
 }) => {
   const containerRef = useRef(null)
   const svgRef = useRef(null)
@@ -888,15 +879,6 @@ export const InteractiveD3Graph: React.FC<InteractiveD3GraphProps> = ({
 
       {/* SVG Canvas Container (Pure Black background) */}
       <div ref={containerRef} className="flex-1 w-full h-full min-h-[480px] bg-black" />
-
-      {/* Activity Heatmap Timeline Strip */}
-      <ActivityHeatmapTimeline
-        dateRange={dateRange}
-        onSelectDate={onSelectDate}
-        onPlayToggle={onPlayToggle}
-        isPlaying={isPlaying}
-        currentPlayDate={currentPlayDate}
-      />
 
       {/* Color-Coded Entity Legend Bar */}
       <div className="border-t border-neutral-800/90 bg-[#09090b]/95 backdrop-blur-md px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-3">

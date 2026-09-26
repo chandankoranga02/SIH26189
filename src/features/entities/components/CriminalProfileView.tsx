@@ -52,7 +52,7 @@ export const CriminalProfileView: React.FC<CriminalProfileViewProps> = ({
         <div className="flex items-start gap-3.5">
           {/* Mugshot Frame with Reticle overlay */}
           <div className="relative h-20 w-20 rounded-2xl border border-neutral-700 bg-neutral-900/90 flex flex-col items-center justify-center shrink-0 overflow-hidden shadow-inner group">
-            <User size={36} className="text-neutral-400" />
+            <img src={`https://i.pravatar.cc/150?u=${entity.id}`} alt={entity.name} className="w-full h-full object-cover" />
             <div className="absolute inset-0 border border-white/20 pointer-events-none rounded-2xl" />
             <div className="absolute bottom-0 inset-x-0 bg-neutral-950/85 py-0.5 text-center text-[9px] font-mono text-neutral-300">
               {entity.id}

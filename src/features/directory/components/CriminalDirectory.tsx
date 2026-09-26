@@ -195,8 +195,12 @@ export const CriminalDirectory: React.FC<CriminalDirectoryProps> = ({
               >
                 {/* Left: Avatar & Identity */}
                 <div className="flex items-center gap-3.5">
-                  <div className="h-10 w-10 rounded border border-neutral-700 bg-neutral-900 flex items-center justify-center font-bold text-sm text-white shrink-0 group-hover:border-white">
-                    <Icon size={18} className="text-white" />
+                  <div className="h-10 w-10 rounded border border-neutral-700 bg-neutral-900 flex items-center justify-center font-bold text-sm text-white shrink-0 group-hover:border-white overflow-hidden">
+                    {ent.type === 'PERSON' ? (
+                      <img src={`https://i.pravatar.cc/150?u=${ent.id}`} alt={ent.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <Icon size={18} className="text-white" />
+                    )}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">

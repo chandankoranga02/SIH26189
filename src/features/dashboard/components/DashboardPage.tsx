@@ -95,8 +95,6 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onLogout }) => {
     to: '2026-09-15'
   })
   const [spotlightEntityId, setSpotlightEntityId] = useState<string | null>(null)
-  const [isTimelinePlaying, setIsTimelinePlaying] = useState(false)
-  const [currentPlayDate, setCurrentPlayDate] = useState<string | null>(null)
 
   // Session Activity Stream
   const [auditLog, setAuditLog] = useState<AuditLogItem[]>([
@@ -109,29 +107,6 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onLogout }) => {
     setAuditLog(prev => [{ time, text: actionText }, ...prev.slice(0, 24)])
   }, [])
 
-  // Day-by-day Investigation Playback Simulation
-  useEffect(() => {
-    if (!isTimelinePlaying) return
-    const dates: string[] = []
-    let d = new Date('2026-08-01')
-    const end = new Date('2026-09-15')
-    while (d <= end) {
-      dates.push(d.toISOString().slice(0, 10))
-      d.setDate(d.getDate() + 1)
-    }
-    let idx = dates.indexOf(currentPlayDate || '2026-08-01')
-    if (idx === -1 || idx >= dates.length - 1) idx = 0
-
-    const interval = setInterval(() => {
-      idx = (idx + 1) % dates.length
-      const nextDate = dates[idx]
-      setCurrentPlayDate(nextDate)
-      setDateRange({ from: '2026-08-01', to: nextDate })
-      logActivity(`Investigation playback step: ${nextDate}`)
-    }, 650)
-
-    return () => clearInterval(interval)
-  }, [isTimelinePlaying, currentPlayDate, logActivity])
 
   const handleToggleSpotlight = (id: string) => {
     setSpotlightEntityId(prev => (prev === id ? null : id))
@@ -143,15 +118,6 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onLogout }) => {
     }
   }
 
-  const handleSelectDateFromHeatmap = (ds: string) => {
-    setDateRange({ from: ds, to: ds })
-    setCurrentPlayDate(ds)
-    logActivity(`Heatmap filtered to ${ds}`)
-  }
-
-  const handlePlayTimelineToggle = () => {
-    setIsTimelinePlaying(p => !p)
-  }
 
   // Use Network Graph Hook for filtered entities, relationships, bridge scores, and clusters
   const { visibleEntities, visibleRels, bridgeScores, clusters } = useNetworkGraph({
@@ -270,7 +236,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onLogout }) => {
   }, [])
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col font-sans selection:bg-white/5 selection:text-white">
+    <div className="h-screen overflow-hidden bg-black text-white flex flex-col font-sans selection:bg-white/5 selection:text-white">
       {/* 1. TOP OPERATIONAL HEADER (Wireframe Header with LinkTracer, Search, Links, Logout) */}
       <Topbar
         activeView={activeView}
@@ -404,10 +370,6 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onLogout }) => {
                 onToggleSpotlight={handleToggleSpotlight}
                 onGenerateReport={() => setReportModalOpen(true)}
                 dateRange={dateRange}
-                onSelectDate={handleSelectDateFromHeatmap}
-                onPlayToggle={handlePlayTimelineToggle}
-                isPlaying={isTimelinePlaying}
-                currentPlayDate={currentPlayDate}
               />
             </main>
 

@@ -189,9 +189,10 @@ export const InvestigatorHub: React.FC<InvestigatorHubProps> = ({
                       onSelectEntity(ent.id)
                       onNavigate('workspace')
                     }}
-                    className="p-3 rounded-xl bg-white/[0.03] border border-white/10 hover:border-cyan-500/50 hover:bg-cyan-950/20 cursor-pointer transition-all flex items-center justify-between group"
+                    className="p-3 rounded-xl bg-white/[0.03] border border-white/10 hover:border-cyan-500/50 hover:bg-cyan-950/20 cursor-pointer transition-all flex items-center justify-between group gap-3"
                   >
-                    <div className="truncate">
+                    <img src={`https://i.pravatar.cc/150?u=${ent.id}`} alt={ent.name} className="w-8 h-8 rounded-full border border-neutral-600 object-cover shrink-0" />
+                    <div className="truncate flex-1">
                       <div className="text-xs font-bold text-white group-hover:text-cyan-300 transition-colors truncate">
                         {ent.name}
                       </div>
